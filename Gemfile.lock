@@ -44,6 +44,7 @@ GEM
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
+    cancancan (1.9.2)
     celluloid (0.16.0)
       timers (~> 4.0.0)
     coderay (1.1.0)
@@ -137,6 +138,7 @@ GEM
       ffi (>= 0.5.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
+    rolify (3.4.1)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
       rspec-expectations (~> 3.1.0)
@@ -205,6 +207,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass
   byebug
+  cancancan
   database_cleaner
   devise
   factory_girl_rails
@@ -218,6 +221,7 @@ DEPENDENCIES
   rb-fchange
   rb-fsevent
   rb-inotify
+  rolify
   rspec-activemodel-mocks
   rspec-its
   rspec-rails
