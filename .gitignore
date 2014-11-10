@@ -1,6 +1,8 @@
 *.rbc
 capybara-*.html
 .rspec
+# Ignore all logfiles and tempfiles.
+/log/*.log
 /log
 /tmp
 /db/*.sqlite3
