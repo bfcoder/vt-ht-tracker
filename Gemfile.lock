@@ -138,7 +138,6 @@ GEM
       ffi (>= 0.5.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
-    rolify (3.4.1)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
       rspec-expectations (~> 3.1.0)
@@ -221,7 +220,6 @@ DEPENDENCIES
   rb-fchange
   rb-fsevent
   rb-inotify
-  rolify
   rspec-activemodel-mocks
   rspec-its
   rspec-rails

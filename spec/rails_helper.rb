@@ -1,6 +1,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 
 require 'rubygems'
+require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/active_model/mocks'
 require 'database_cleaner'

@@ -17,7 +17,6 @@ gem 'turbolinks'
 # authentication, authorization, integrations
 gem 'devise'
 gem 'cancancan'
-gem 'rolify'
 
 # UI
 gem 'sass-rails', '~> 4.0.3'
