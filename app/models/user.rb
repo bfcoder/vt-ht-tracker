@@ -10,6 +10,22 @@ class User < ActiveRecord::Base
     self.has_role? :admin
   end
 
+  def presidency?
+    self.has_role? :presidency
+  end
+
+  def teaching_coordinator?
+    self.has_role? :teaching_coordinator
+  end
+
+  def district_leader?
+    self.has_role? :district_leader
+  end
+
+  def visiting_teacher?
+    self.has_role? :visiting_teacher
+  end
+
   def has_role?(role)
     roles.include?(role)
   end
