@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users
+  resources :districts
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

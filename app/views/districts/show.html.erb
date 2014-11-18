@@ -1,0 +1,6 @@
+<%= form_for @district do |f| -%>
+  <% @district.sisters.each do |sister| -%>
+    <%= sister.name %><br/>
+  <% end -%>
+  <%= f.submit %>
+<% end -%>
