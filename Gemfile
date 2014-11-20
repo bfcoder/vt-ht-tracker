@@ -11,9 +11,6 @@ gem "pg"
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-
 # authentication, authorization, integrations
 gem 'devise'
 gem 'cancancan'
