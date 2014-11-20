@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render 'layouts/head' %>
+  </head>
+  <body>
+    <%= render 'layouts/navigation' %>
+    <div class="container">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+    </div>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'districts' %>
+  </body>
+</html>

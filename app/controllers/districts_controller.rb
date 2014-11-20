@@ -1,4 +1,5 @@
 class DistrictsController < ApplicationController
+  layout 'districts', only: [:index]
 
   respond_to :html
 

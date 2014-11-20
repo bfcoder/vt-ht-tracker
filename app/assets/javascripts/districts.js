@@ -1,2 +1,7 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+//= require handlebars
+//= require ember
+//= require ember-data
+
+window.VtTracker = Ember.Application.create({
+  rootElement: "#EmberStart"
+});
