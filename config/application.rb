@@ -25,5 +25,6 @@ module VtTracker
       config.embed = :ids
       config.embed_in_root = false
     end
+    config.handlebars.templates_root = 'districts/templates'
   end
 end
