@@ -7,6 +7,10 @@ FactoryGirl.define do
     factory :admin_user do
       roles { |u| ['admin'] }
     end
+
+    factory :visiting_teacher_user do
+      roles { |u| ['visiting_teacher'] }
+    end
   end
 
 end
