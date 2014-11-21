@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   resources :users
   resources :districts
 
+  namespace :api, defaults: {format: :json} do
+    resources :districts
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
