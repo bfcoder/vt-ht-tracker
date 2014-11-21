@@ -17,4 +17,3 @@ VtTracker = Ember.Application.create({
 
   rootElement: "#EmberStart"
 });
-
