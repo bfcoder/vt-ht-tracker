@@ -19,4 +19,12 @@ FactoryGirl.define do
   sequence :address do |n|
     "#{n} West #{n} South"
   end
+
+  sequence :month do |n|
+    Date.today.beginning_of_month - n.month
+  end
+
+  sequence :status do |n|
+    ['visited', 'not_visited', 'other'].sample
+  end
 end

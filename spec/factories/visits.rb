@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :visit do
-    month ""
-status "MyString"
+    month FactoryGirl.generate(:month)
+    status FactoryGirl.generate(:status)
+    sister
   end
 
 end
