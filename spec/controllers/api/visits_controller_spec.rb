@@ -137,28 +137,43 @@ RSpec.describe Api::VisitsController, type: :controller do
     end
 
     describe "POST create" do
-      it "returns AccessDenied" do
+      it "creates a new Visit" do
         expect {
           post :create, {visit: build_attributes(:visit), format: :json}
-        }.to raise_error(CanCan::AccessDenied)
+        }.to change(Visit, :count).by(1)
+      end
+
+      it "returns a newly created visit" do
+        post :create, {visit: build_attributes(:visit), format: :json}
+        result = JSON.parse(response.body)
+        expect(result['visit']).to be_present
       end
     end
 
     describe "PUT update" do
-      it "returns AccessDenied" do
-        visit = FactoryGirl.create(:visit)
-        expect {
-          put :update, {id: visit.id, visit: { "name" => "a name" }, format: :json}
-        }.to raise_error(CanCan::AccessDenied)
+      describe "with valid params" do
+        it "updates the requested visit" do
+          visit = FactoryGirl.create(:visit)
+          expect_any_instance_of(Visit).to receive(:update_attributes).with({ "status" => "a status" })
+          put :update, {id: visit.id, visit: { "status" => "a status" }, format: :json}
+        end
+
+        it "returns the updated visit" do
+          visit = FactoryGirl.create(:visit)
+          put :update, {id: visit.to_param, visit: build_attributes(:visit), format: :json}
+          result = JSON.parse(response.body)
+          expect(result['visit']).to be_present
+          expect(Visit.find(result['visit']['id'])).to eq(visit)
+        end
       end
     end
 
     describe "DELETE destroy" do
-      it "returns AccessDenied" do
+      it "destroys requested visit" do
         visit = FactoryGirl.create(:visit)
         expect {
           delete :destroy, {id: visit.to_param, format: :json}
-        }.to raise_error(CanCan::AccessDenied)
+        }.to change(Visit, :count).by(-1)
       end
     end
   end
