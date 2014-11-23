@@ -20,6 +20,7 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'momentjs-rails'
 
 # Ember
 gem 'ember-rails'
