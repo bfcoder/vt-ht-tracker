@@ -39,6 +39,13 @@ RSpec.describe Api::VisitsController, type: :controller do
         expect(result['visit']).to be_present
         expect(result['visit']['id']).to eq(visit.id)
       end
+
+      it "returns the status" do
+        visit = FactoryGirl.create(:visit, status: 'visited')
+        get :show, id: visit.to_param, format: :json
+        result = JSON.parse(response.body)
+        expect(result['visit']['status']).to eq('visited')
+      end
     end
 
     describe "POST create" do
@@ -119,6 +126,13 @@ RSpec.describe Api::VisitsController, type: :controller do
         result = JSON.parse(response.body)
         expect(result['visit']).to be_present
         expect(result['visit']['id']).to eq(visit.id)
+      end
+
+      it "does not return the status" do
+        visit = FactoryGirl.create(:visit, status: 'visited')
+        get :show, id: visit.to_param, format: :json
+        result = JSON.parse(response.body)
+        expect(result['visit']['status']).to eq(nil)
       end
     end
 
