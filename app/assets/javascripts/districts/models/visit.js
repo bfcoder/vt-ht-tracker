@@ -4,5 +4,10 @@ VtTracker.Visit = DS.Model.extend({
 
   // Attributes
   month: DS.attr('date'),
-  status: DS.attr('string')
+  status: DS.attr('string'),
+
+  // Properties
+  monthFormatted: function() {
+    return moment(this.get('month')).format("MMMM YYYY");
+  }.property('month')
 });
