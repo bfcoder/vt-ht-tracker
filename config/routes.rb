@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :districts
     resources :sisters
     resources :visits
+    resources :users
   end
 
   # Example of regular route:
