@@ -1,6 +1,9 @@
 VtTracker.DistrictController = Ember.ObjectController.extend({
   isSaving: false,
 
+  sistersSorting: ['lastName'],
+  sortedSisters: Ember.computed.sort('sisters', 'sistersSorting'),
+
   showSaveNotice: function() {
     return this.get('isSaving');
   }.property('isSaving'),
