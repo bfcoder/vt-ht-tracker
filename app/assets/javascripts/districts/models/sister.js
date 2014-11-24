@@ -9,6 +9,16 @@ VtTracker.Sister = DS.Model.extend({
 
   // Properties
   fullName: function(){
-    return this.get('firstName') + " " + this.get('lastName');
+    var firstName = this.get('firstName');
+    var lastName = this.get('lastName');
+    if (!Ember.isEmpty(firstName) && !Ember.isEmpty(lastName)) {
+      return firstName + " " + lastName;
+    } else if (!Ember.isEmpty(lastName)) {
+      return lastName;
+    } else if (!Ember.isEmpty(firstName)) {
+      return firstName;
+    } else {
+      return "";
+    }
   }.property('firstName', 'lastName')
 });
