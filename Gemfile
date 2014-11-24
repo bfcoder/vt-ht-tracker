@@ -41,6 +41,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry'
 
+  gem 'faker'
+
   gem "rspec-rails"
   gem 'rspec-its'
   gem 'rspec-activemodel-mocks'

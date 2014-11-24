@@ -86,6 +86,8 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     ffi (1.9.6)
     formatador (0.2.5)
     guard (2.8.2)
@@ -228,6 +230,7 @@ DEPENDENCIES
   ember-rails
   ember-source (= 1.8.1)
   factory_girl_rails
+  faker
   guard
   guard-bundler
   guard-rspec
