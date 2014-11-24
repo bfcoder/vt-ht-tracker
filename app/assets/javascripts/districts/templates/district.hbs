@@ -1,10 +1,10 @@
 {{#each sister in controller.sisters}}
   <div class="row">
-    <div class="text-center hidden-md hidden-lg">{{sister.name}}</div>
-    {{!-- <h4 class="sisterName hidden-xs hidden-sm">{{sister.name}}</h4> --}}
+    <div class="text-center hidden-md hidden-lg">{{sister.fullName}}</div>
+    {{!-- <h4 class="sisterName hidden-xs hidden-sm">{{sister.fullName}}</h4> --}}
     <div class="clearfix"></div>
     <div class="text-center">
-      <span class="hidden-xs hidden-sm">{{sister.name}}</span>
+      <span class="hidden-xs hidden-sm">{{sister.fullName}}</span>
       {{#each visit in sister.visits itemController='visit'}}
         <div class="btn-group well well-sm" role="group" aria-label="...">
           <h4 class="text-center"><span class="label label-default">{{visit.monthFormatted}}</span></h4>

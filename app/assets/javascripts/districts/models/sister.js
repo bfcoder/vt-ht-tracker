@@ -4,5 +4,11 @@ VtTracker.Sister = DS.Model.extend({
   district: DS.belongsTo('district', { async: true }),
 
   // Attributes
-  name: DS.attr('string')
+  firstName: DS.attr('string'),
+  lastName: DS.attr('string'),
+
+  // Properties
+  fullName: function(){
+    return this.get('firstName') + " " + this.get('lastName');
+  }.property('firstName', 'lastName')
 });
