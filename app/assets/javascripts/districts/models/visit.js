@@ -3,11 +3,16 @@ VtTracker.Visit = DS.Model.extend({
   sister: DS.belongsTo('sister', { async: true }),
 
   // Attributes
-  month: DS.attr('date'),
+  month: DS.attr('string'),
   status: DS.attr('string'),
 
   // Properties
   monthFormatted: function() {
-    return moment(this.get('month')).format("MMMM YYYY");
+    var month = this.get('month');
+    if (Ember.isEmpty(month)){
+      return "LOADING...";
+    } else {
+      return moment(month).format("MMMM YYYY");
+    }
   }.property('month')
 });

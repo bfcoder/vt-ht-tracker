@@ -10,4 +10,8 @@ class VisitSerializer < ActiveModel::Serializer
       nil
     end
   end
+
+  def month
+    object.month.strftime("%Y-%m-%d")
+  end
 end
