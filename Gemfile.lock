@@ -66,7 +66,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    ember-data-source (1.0.0.beta.11)
+    ember-data-source (1.0.0.beta.12)
       ember-source
     ember-rails (0.15.0)
       active_model_serializers
@@ -226,7 +226,7 @@ DEPENDENCIES
   cancancan
   database_cleaner
   devise
-  ember-data-source (= 1.0.0.beta.11)
+  ember-data-source (= 1.0.0.beta.12)
   ember-rails
   ember-source (= 1.8.1)
   factory_girl_rails

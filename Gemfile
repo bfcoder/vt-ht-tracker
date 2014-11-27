@@ -25,7 +25,7 @@ gem 'momentjs-rails'
 # Ember
 gem 'ember-rails'
 gem 'ember-source', '1.8.1'
-gem 'ember-data-source', '1.0.0.beta.11'
+gem 'ember-data-source', '1.0.0.beta.12'
 
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
