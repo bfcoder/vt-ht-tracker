@@ -1,6 +1,6 @@
 VtTracker.Visit = DS.Model.extend({
   // Associations
-  sister: DS.belongsTo('sister', { async: true }),
+  sister: DS.belongsTo('sister'),
 
   // Attributes
   month: DS.attr('string'),

@@ -1,7 +1,7 @@
 VtTracker.Sister = DS.Model.extend({
   // Associations
-  visits: DS.hasMany('visit', { async: true }),
-  district: DS.belongsTo('district', { async: true }),
+  visits: DS.hasMany('visit'),
+  district: DS.belongsTo('district'),
 
   // Attributes
   firstName: DS.attr('string'),
