@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
     self.has_role? :visiting_teacher
   end
 
+  def privileged_user?
+    self.admin? || self.presidency? || self.teaching_coordinator? || self.district_leader?
+  end
+
   def has_role?(role)
     roles.include?(role)
   end

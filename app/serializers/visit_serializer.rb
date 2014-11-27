@@ -4,7 +4,7 @@ class VisitSerializer < ActiveModel::Serializer
   has_one :sister
 
   def status
-    if scope.admin? || scope.presidency? || scope.teaching_coordinator? || scope.district_leader?
+    if scope.privileged_user?
       object.status
     else
       nil
