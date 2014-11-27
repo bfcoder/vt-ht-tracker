@@ -1,0 +1,16 @@
+<td>
+  <%= user.email %>
+</td>
+<td>
+  <%= form_for(user) do |f| %>
+    <% for role in User::ROLES %>
+      <%= check_box_tag "user[roles][#{role}]", role, user.roles.include?(role), {name: "user[roles][]"}%>
+      <%= label_tag "user_roles_#{role}", role.to_s.humanize.titleize %><br />
+    <% end %>
+    <%= hidden_field_tag "user[roles][]", "" %>
+    <%= f.submit 'Change Role', class: 'btn btn-default' %>
+  <% end %>
+</td>
+<td>
+  <%= link_to("Delete user", user_path(user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger') unless user == current_user %>
+</td>
