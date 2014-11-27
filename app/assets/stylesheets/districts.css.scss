@@ -5,3 +5,18 @@
 .sisterName {
   padding-left: 10px;
 }
+
+.label-large-transparent {
+  background-color: transparent;
+  color: black;
+  font-family: times;
+  font-size: large;
+  &.label-larger {
+    font-size: x-large;
+  }
+}
+
+.btn-clear {
+  background-color: #73C9F5;
+  border-color: #73C9F5;
+}

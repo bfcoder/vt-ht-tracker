@@ -1,13 +1,13 @@
 {{#each sister in sortedSisters}}
   <div class="row">
-    <div class="text-center hidden-md hidden-lg">{{sister.fullName}}</div>
-    {{!-- <h4 class="sisterName hidden-xs hidden-sm">{{sister.fullName}}</h4> --}}
+    <div class="text-center hidden-md hidden-lg label-large-transparent label-larger">{{sister.fullName}}</div>
+    {{!-- <h4 class="sisterName hidden-xs hidden-sm label-large-transparent label-larger">{{sister.fullName}}</h4> --}}
     <div class="clearfix"></div>
     <div class="text-center">
-      <span class="hidden-xs hidden-sm">{{sister.fullName}}</span>
+      <span class="hidden-xs hidden-sm label-large-transparent label-larger">{{sister.fullName}}</span>
       {{#each visit in sister.visits itemController='visit'}}
         <div class="btn-group well well-sm" role="group" aria-label="...">
-          <h4 class="text-center"><span class="label label-default">{{visit.monthFormatted}}</span></h4>
+          <h4 class="text-center"><span class="label label-default label-large-transparent">{{visit.monthFormatted}}</span></h4>
           <label class="btn btn-default">
             {{view "radioButton"
               name=visit.id
@@ -31,7 +31,7 @@
               Other
             </label>
           {{/if}}
-          <button type="button" class="btn btn-warning" {{action 'clearSelection'}}>Clear</button>
+          <button type="button" class="btn btn-warning btn-clear" {{action 'clearSelection'}}>Clear</button>
         </div>
       {{/each}}
     </div>
