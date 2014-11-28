@@ -1,1 +1,3 @@
-VtTracker.ApplicationController = Ember.ArrayController.extend({});
+VtTracker.ApplicationController = Ember.ArrayController.extend({
+  breadCrumb: 'Home'
+});

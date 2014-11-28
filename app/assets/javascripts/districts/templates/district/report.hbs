@@ -1,0 +1,21 @@
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Sister Name</th>
+        <th>Previous Month</th>
+        <th>Current Month</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each sister in sortedSisters}}
+        <tr>
+          <td>{{sister.fullName}}</td>
+          {{#each visit in sister.visits itemController='visit'}}
+            <td>{{visit.statusHumanize}}</td>
+          {{/each}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
