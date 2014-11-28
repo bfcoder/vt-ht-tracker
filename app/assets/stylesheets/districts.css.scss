@@ -10,13 +10,18 @@
   background-color: transparent;
   color: black;
   font-family: times;
-  font-size: large;
+  font-size: 19px;
+  font-weight: 600;
   &.label-larger {
-    font-size: x-large;
+    font-size: 20px;
   }
 }
 
 .btn-clear {
   background-color: #73C9F5;
   border-color: #73C9F5;
+}
+
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
 }
