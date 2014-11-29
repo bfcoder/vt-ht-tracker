@@ -8,8 +8,13 @@ VtTracker.MyModalComponent = Ember.Component.extend({
     }
   },
   show: function() {
-    this.$('.modal').modal().on('hidden.bs.modal', function() {
-      this.sendAction('close');
-    }.bind(this));
+    var _self = this;
+    _self.$('.modal').modal()
+    .on('shown.bs.modal', function() {
+      _self.$('[autofocus]').focus();
+    })
+    .on('hidden.bs.modal', function() {
+      _self.sendAction('close');
+    });
   }.on('didInsertElement')
 });
