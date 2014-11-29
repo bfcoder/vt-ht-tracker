@@ -1,11 +1,14 @@
 <div class="text-center">
+    <button {{action 'showModal' 'sister-modal' newSister}} class="btn btn-default new-sister">New Sister</button>
     <table class="table table-hover">
       <tbody>
         {{#each sister in sortedSisters}}
-          <tr>
-            <td>{{sister.fullName}}</td>
-            <td><button {{action 'showModal' 'sister-modal' sister}}>Edit</button></td>
-          </tr>
+          {{#if sister.fullName}}
+            <tr>
+              <td>{{sister.fullName}}</td>
+              <td><button {{action 'showModal' 'sister-modal' sister}} class="btn btn-default btn-xs">Edit</button></td>
+            </tr>
+          {{/if}}
         {{/each}}
       </tbody>
   </table>
