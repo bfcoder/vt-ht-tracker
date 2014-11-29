@@ -1,1 +1,3 @@
-VtTracker.IndexController = Ember.ArrayController.extend({});
+VtTracker.IndexController = Ember.ArrayController.extend({
+  newDistrict: null
+});

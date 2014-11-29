@@ -1,3 +1,7 @@
+<button {{action 'showModal' 'district-modal' newDistrict}} class="btn btn-default new-district">New District</button>
 {{#each district in controller}}
-  {{#link-to 'district' district class='btn btn-default'}}{{district.name}}{{/link-to}}
+  {{#unless district.isNew}}
+    {{#link-to 'district' district}}{{district.name}}{{/link-to}}
+    <button {{action 'showModal' 'district-modal' district}} class="btn btn-default btn-xs">Edit</button>
+  {{/unless}}
 {{/each}}
