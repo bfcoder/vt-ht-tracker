@@ -1,5 +1,5 @@
 VtTracker.SisterModalController = Ember.ObjectController.extend({
-  needs: ['district', 'districtSistersIndex'],
+  needs: ['districtSistersIndex'],
 
   modalTitle: function() {
     if (this.get('isNew')) {
