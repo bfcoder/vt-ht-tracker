@@ -23,7 +23,7 @@ VtTracker.User = DS.Model.extend({
     return this.hasRole('visiting_teacher');
   }.property('roles.@each'),
 
-  canSetVisitsToOther: function(){
+  isPrivileged: function(){
     return this.get('isAdmin') || this.get('isPresidency') || this.get('isTeachingCoordinator') || this.get('isDistrictLeader');
   }.property('isAdmin', 'isPresidency', 'isTeachingCoordinator', 'isDistrictLeader'),
 

@@ -22,6 +22,11 @@
   border-color: #73C9F5;
 }
 
+.district-link {
+  width: 35%;
+  margin-bottom: 10px;
+}
+
 @-moz-document url-prefix() {
   fieldset { display: table-cell; }
 }

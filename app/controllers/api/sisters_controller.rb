@@ -48,6 +48,6 @@ class Api::SistersController < ApplicationController
     end
 
     def sister_params
-      params.require(:sister).permit(:name, :district_id)
+      params.require(:sister).permit(:first_name, :last_name, :district_id)
     end
 end

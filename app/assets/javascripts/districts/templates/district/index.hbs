@@ -1,4 +1,9 @@
-{{#link-to 'district.report' class='btn btn-default'}}Report{{/link-to}}
+{{#if currentUser.isPrivileged}}
+  <div class='text-center'>
+    {{#link-to 'district.report' class='btn btn-default district-link'}}Report{{/link-to}}
+    {{#link-to 'district.sisters' class='btn btn-default district-link'}}Sisters{{/link-to}}
+  </div>
+{{/if}}
 {{#each sister in sortedSisters}}
   <div class="row">
     <div class="text-center hidden-md hidden-lg label-large-transparent label-larger">{{sister.fullName}}</div>
@@ -23,7 +28,7 @@
               value='not_visited'}}
             Not Visited
           </label>
-          {{#if currentUser.canSetVisitsToOther}}
+          {{#if currentUser.isPrivileged}}
             <label class="btn btn-default">
               {{view "radioButton"
                 name=visit.id
