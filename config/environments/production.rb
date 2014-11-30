@@ -79,4 +79,5 @@ Rails.application.configure do
 
   # My Configs
   config.ember.variant = :production
+  config.action_mailer.default_url_options = { host: 'vt-tracker.herokuapp.com', port: 3000 }
 end
