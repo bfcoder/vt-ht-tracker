@@ -28,6 +28,9 @@ gem 'ember-rails'
 gem 'ember-source', '1.8.1'
 gem 'ember-data-source', '1.0.0.beta.12'
 
+# Error notifications
+gem 'rollbar'
+
 # Heroku Stuff
 gem 'rails_12factor'
 
