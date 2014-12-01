@@ -12,6 +12,9 @@
           {{#if currentUser.isPrivileged}}
             <div>
               <button {{action 'showModal' 'district-modal' district}} class="btn btn-default btn-sm">Edit</button>
+              {{#unless district.sisters}}
+                <button {{action 'showModal' 'district-delete-modal' district}} class="btn btn-default btn-sm">Delete</button>
+              {{/unless}}
             <div>
           {{/if}}
         </div>

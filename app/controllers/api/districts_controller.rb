@@ -35,7 +35,7 @@ class Api::DistrictsController < ApplicationController
   end
 
   def destroy
-    if @district.destroy
+    if @district.sisters.length == 0 && @district.destroy
       respond_with @district
     else
       render json: {success: false}, status: 422
