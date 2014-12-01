@@ -7,6 +7,7 @@
             <tr>
               <td>{{sister.fullName}}</td>
               <td><button {{action 'showModal' 'sister-modal' sister}} class="btn btn-default btn-xs">Edit</button></td>
+              <td><button {{action 'showModal' 'sister-delete-modal' sister}} class="btn btn-default btn-xs">Delete</button></td>
             </tr>
           {{/unless}}
         {{/each}}
