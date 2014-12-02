@@ -11,7 +11,7 @@ class Api::DistrictsController < ApplicationController
     else
       @districts = District.includes(:sisters).all
     end
-    respond_with(@districts)
+    respond_with(@districts.sort_by {|district| district.name})
   end
 
   def show
