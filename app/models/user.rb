@@ -2,7 +2,15 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :authentication_keys => [:login]
+
+  attr_accessor :login
+
+  validates :username,
+    :uniqueness => {
+      :case_sensitive => false
+    }
 
   ROLES = %i[admin presidency teaching_coordinator district_leader visiting_teacher]
 
@@ -51,6 +59,16 @@ class User < ActiveRecord::Base
   def roles
     ROLES.reject do |r|
       ((roles_mask.to_i || 0) & 2**ROLES.index(r)).zero?
+    end
+  end
+
+  # Devise overrides
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    else
+      where(conditions).first
     end
   end
 end
