@@ -9,7 +9,10 @@ class Ability
     elsif user.has_role? :teaching_coordinator
       can :manage, :all
     elsif user.has_role? :district_leader
-      can :manage, :all
+      can :manage, Visit
+      can :read, User, id: user.id
+      can :read, District
+      can :read, Sister
     elsif user.has_role? :visiting_teacher
       can :manage, Visit
       can :read, User, id: user.id

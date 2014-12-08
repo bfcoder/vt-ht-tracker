@@ -24,7 +24,7 @@ VtTracker.User = DS.Model.extend({
   }.property('roles.@each'),
 
   isPrivileged: function(){
-    return this.get('isAdmin') || this.get('isPresidency') || this.get('isTeachingCoordinator') || this.get('isDistrictLeader');
+    return this.get('isAdmin') || this.get('isPresidency') || this.get('isTeachingCoordinator');
   }.property('isAdmin', 'isPresidency', 'isTeachingCoordinator', 'isDistrictLeader'),
 
   hasRole: function(role_name){
