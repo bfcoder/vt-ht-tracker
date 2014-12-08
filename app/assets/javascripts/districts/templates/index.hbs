@@ -1,22 +1,24 @@
 {{#if currentUser.isPrivileged}}
-  <div class="text-center">
+  <div class="text-center new-district">
     <button {{action 'showModal' 'district-modal' newDistrict}} class="btn btn-default new-district">New District</button>
   </div>
 {{/if}}
 <div class="row">
   {{#each district in sortedDistricts}}
     {{#unless district.isNew}}
-      <div class="col-md-3">
-        <div class="text-center">
-          <h3>{{#link-to 'district' district}}{{district.name}}{{/link-to}}</h3>
-          {{#if currentUser.isPrivileged}}
-            <div>
-              <button {{action 'showModal' 'district-modal' district}} class="btn btn-default btn-sm">Edit</button>
-              {{#unless district.sisters}}
-                <button {{action 'showModal' 'district-delete-modal' district}} class="btn btn-default btn-sm">Delete</button>
-              {{/unless}}
-            <div>
-          {{/if}}
+      <div class="col-md-3 district-link">
+        <div class="well col-md-12">
+          <div class="text-center">
+            <h3>{{#link-to 'district' district}}{{district.name}}{{/link-to}}</h3>
+            {{#if currentUser.isPrivileged}}
+              <div>
+                <button {{action 'showModal' 'district-modal' district}} class="btn btn-default btn-sm">Edit</button>
+                {{#unless district.sisters}}
+                  <button {{action 'showModal' 'district-delete-modal' district}} class="btn btn-default btn-sm">Delete</button>
+                {{/unless}}
+              <div>
+            {{/if}}
+          </div>
         </div>
       <div>
     {{/unless}}
