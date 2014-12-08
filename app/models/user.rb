@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
     self.has_role? :visiting_teacher
   end
 
+  def has_any_role?
+    self.roles_mask.present? && self.roles_mask > 0
+  end
+
   def privileged_user?
     self.admin? || self.presidency? || self.teaching_coordinator? || self.district_leader?
   end

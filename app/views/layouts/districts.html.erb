@@ -10,6 +10,8 @@
       <%= yield %>
     </div>
     <%= javascript_include_tag 'application' %>
-    <%= javascript_include_tag 'districts' %>
+    <% if user_signed_in? && current_user.has_any_role? -%>
+      <%= javascript_include_tag 'districts' %>
+    <% end -%>
   </body>
 </html>
