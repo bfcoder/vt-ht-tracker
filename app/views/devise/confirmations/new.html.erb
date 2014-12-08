@@ -1,21 +1,35 @@
-<h2>Resend confirmation instructions</h2>
-
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <h2>Resend confirmation instructions</h2>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </div>
+  <div class="panel-body">
+    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: 'form-horizontal', role: 'form' }) do |f| %>
+      <%= devise_error_messages! %>
 
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
+      <div class="col-sm-5">
+        <%= f.label :email, for: 'inputEmail', class: 'col-sm-2 control-label' %><br />
+        <div class="col-sm-5">
+          <%= f.email_field :email, id: 'inputEmail', class: 'form-control', autofocus: true %>
+        </div>
+      </div>
+
+      <div class="col-sm-5">
+        <%= f.label :username, for: 'inputUsername', class: 'col-sm-2 control-label' %><br />
+        <div class="col-sm-5">
+          <%= f.text_field :username, id: 'inputUsername', class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <%= f.submit "Resend confirmation instructions", class: 'btn btn-default' %>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
 
 <%= render "devise/shared/links" %>
