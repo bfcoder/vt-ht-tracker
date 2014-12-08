@@ -9,12 +9,14 @@
     </thead>
     <tbody>
       {{#each sister in sortedSisters}}
-        <tr>
-          <td>{{sister.fullName}}</td>
-          {{#each visit in sister.visits itemController='visit'}}
-            <td>{{visit.statusHumanize}}</td>
-          {{/each}}
-        </tr>
+        {{#unless sister.isNew}}
+          <tr>
+            <td>{{sister.fullName}}</td>
+            {{#each visit in sister.visits itemController='visit'}}
+              <td>{{visit.statusHumanize}}</td>
+            {{/each}}
+          </tr>
+        {{/unless}}
       {{/each}}
     </tbody>
   </table>
