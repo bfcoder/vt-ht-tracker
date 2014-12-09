@@ -1,6 +1,6 @@
 VtTracker.IndexRoute = Ember.Route.extend({
   model: function() {
-    return this.store.find('district');
+    return this.modelFor('application');
   },
 
   setupController: function(controller, district) {

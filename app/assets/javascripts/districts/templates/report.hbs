@@ -1,0 +1,34 @@
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Sister</th>
+        <th>{{previousMonth}}</th>
+        <th>{{currentMonth}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each district in sortedDistricts itemController='districtReport'}}
+        {{#if district.sortedSisters}}
+          <tr>
+            <td>
+              {{district.name}}
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          {{#each sister in district.sortedSisters}}
+            {{#unless sister.isNew}}
+              <tr>
+                <td>{{sister.fullName}}</td>
+                {{#each visit in sister.visits itemController='visit'}}
+                  <td>{{visit.statusHumanize}}</td>
+                {{/each}}
+              </tr>
+            {{/unless}}
+          {{/each}}
+        {{/if}}
+      {{/each}}
+    </tbody>
+  </table>
+</div>

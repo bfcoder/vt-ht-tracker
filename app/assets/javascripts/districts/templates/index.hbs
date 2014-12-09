@@ -1,6 +1,7 @@
 {{#if currentUser.isPrivileged}}
   <div class="text-center new-district">
     <button {{action 'showModal' 'district-modal' newDistrict}} class="btn btn-default new-district">New District</button>
+    {{#link-to 'report' class='full-report'}}Full Report{{/link-to}}
   </div>
 {{/if}}
 <div class="row">

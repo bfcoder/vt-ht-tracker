@@ -1,4 +1,8 @@
 VtTracker.ApplicationRoute = Ember.Route.extend({
+  model: function() {
+    return this.store.find('district');
+  },
+
   actions: {
     showModal: function(name, content) {
       this.controllerFor(name).set('content', content);
