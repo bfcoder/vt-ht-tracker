@@ -80,4 +80,15 @@ Rails.application.configure do
   # My Configs
   config.ember.variant = :production
   config.action_mailer.default_url_options = { host: Rails.application.secrets.domain_name }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.sendgrid.net',
+    port:                 587,
+    domain:               Rails.application.secrets.domain_name,
+    user_name:            Rails.application.secrets.sendgrid_username,
+    password:             Rails.application.secrets.sendgrid_password,
+    authentication:       'plain',
+    enable_starttls_auto: true
+  }
 end

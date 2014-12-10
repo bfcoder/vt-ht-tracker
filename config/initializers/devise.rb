@@ -261,4 +261,5 @@ Devise.setup do |config|
   config.authentication_keys = [ :login ]
   config.reset_password_keys = [ :username ]
   config.confirmation_keys = [ :username ]
+  config.mailer_sender = Rails.application.secrets.mailer_sender
 end
