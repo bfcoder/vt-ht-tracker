@@ -10,16 +10,9 @@
       <%= devise_error_messages! %>
 
       <div class="form-group">
-        <%= f.label :email, for: 'inputEmail', class: 'col-sm-2 control-label' %><br />
+        <%= f.label :login, for: 'inputLogin', class: 'col-sm-2 control-label' %><br />
         <div class="col-sm-5">
-          <%= f.email_field :email, id: 'inputEmail', class: 'form-control', autofocus: true %>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :username, for: 'inputUsername', class: 'col-sm-2 control-label' %><br />
-        <div class="col-sm-5">
-          <%= f.text_field :username, id: 'inputUsername', class: 'form-control' %>
+          <%= f.text_field :login, id: 'inputLogin', class: 'form-control' %>
         </div>
       </div>
 

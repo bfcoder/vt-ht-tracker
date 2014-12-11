@@ -2,15 +2,13 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :authentication_keys => [:login]
+         :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessor :login
 
   validates :username,
-    :uniqueness => {
-      :case_sensitive => false
-    }
+    uniqueness: { case_sensitive: false },
+    presence: false
 
   ROLES = %i[admin presidency teaching_coordinator district_leader visiting_teacher]
 
@@ -68,11 +66,16 @@ class User < ActiveRecord::Base
 
   # Devise overrides
   def self.find_first_by_auth_conditions(warden_conditions)
-    conditions = warden_conditions.dup
+    if warden_conditions.respond_to? :permit
+      conditions = warden_conditions.dup.permit(:login)
+    else
+      conditions = warden_conditions.dup
+    end
     if login = conditions.delete(:login)
       where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
     else
       where(conditions).first
     end
   end
+
 end
