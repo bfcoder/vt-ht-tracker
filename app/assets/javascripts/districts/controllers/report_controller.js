@@ -13,7 +13,6 @@ VtTracker.ReportController = Ember.ArrayController.extend(VtTracker.CommonDate, 
 
     this.get('model').forEach(function(district) {
       if (!district.get('isNew')) {
-        // num_districts++;
         var district_percent_visited = district.get('percentVisited');
         num_visited.previous_month += district_percent_visited.previous_month;
         num_visited.current_month += district_percent_visited.current_month;
