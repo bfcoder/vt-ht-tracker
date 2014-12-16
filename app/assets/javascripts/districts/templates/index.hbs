@@ -7,8 +7,8 @@
 <div class="row">
   {{#each district in sortedDistricts}}
     {{#unless district.isNew}}
-      <div class="col-md-3 district-link">
-        <div class="well col-md-12">
+      <div class="col-md-3">
+        <div class="well col-md-12 district-link">
           <div class="text-center">
             <h3>{{#link-to 'district' district}}{{district.name}}{{/link-to}}</h3>
             {{#if currentUser.isPrivileged}}
