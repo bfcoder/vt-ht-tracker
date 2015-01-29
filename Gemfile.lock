@@ -66,8 +66,8 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    ember-data-source (1.0.0.beta.12)
-      ember-source
+    ember-data-source (1.0.0.beta.14.1)
+      ember-source (~> 1.8)
     ember-rails (0.15.1)
       active_model_serializers
       barber (>= 0.4.1)
@@ -77,7 +77,7 @@ GEM
       handlebars-source (> 1.0.0)
       jquery-rails (>= 1.0.17)
       railties (>= 3.1)
-    ember-source (1.9.0)
+    ember-source (1.9.1)
       handlebars-source (~> 2.0)
     erubis (2.7.0)
     execjs (2.2.2)
@@ -239,9 +239,9 @@ DEPENDENCIES
   cancancan
   database_cleaner
   devise
-  ember-data-source (= 1.0.0.beta.12)
+  ember-data-source (= 1.0.0.beta.14.1)
   ember-rails
-  ember-source (= 1.9.0)
+  ember-source (= 1.9.1)
   factory_girl_rails
   faker
   guard

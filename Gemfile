@@ -25,8 +25,8 @@ gem 'momentjs-rails'
 
 # Ember
 gem 'ember-rails'
-gem 'ember-source', '1.9.0'
-gem 'ember-data-source', '1.0.0.beta.12'
+gem 'ember-source', '1.9.1'
+gem 'ember-data-source', '1.0.0.beta.14.1'
 
 # Error notifications
 gem 'rollbar'
