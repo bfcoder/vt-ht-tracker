@@ -50,6 +50,12 @@
                 {{/if}}
                 <button type="button" class="btn btn-warning btn-clear" {{action 'clearSelection'}}>Clear</button>
               </div>
+              <div class="col-md-14">
+                {{text-area
+                  value=visit.notes
+                  placeholder="Spiritual or Physical Needs/Notes"
+                  formController=controller}}
+              </div>
             </div>
           {{/each}}
         </div>

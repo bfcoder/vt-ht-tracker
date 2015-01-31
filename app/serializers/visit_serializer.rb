@@ -11,6 +11,14 @@ class VisitSerializer < ActiveModel::Serializer
     end
   end
 
+  def notes
+    if scope.privileged_user?
+      object.notes
+    else
+      nil
+    end
+  end
+
   def month
     object.month.strftime("%Y-%m-%d")
   end

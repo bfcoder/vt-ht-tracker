@@ -48,6 +48,6 @@ class Api::VisitsController < ApplicationController
     end
 
     def visit_params
-      params.require(:visit).permit(:month, :status, :sister_id)
+      params.require(:visit).permit(:month, :status, :sister_id, :notes)
     end
 end

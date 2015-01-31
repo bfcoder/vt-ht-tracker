@@ -5,6 +5,7 @@ VtTracker.Visit = DS.Model.extend({
   // Attributes
   month: DS.attr('string'),
   status: DS.attr('string'),
+  notes: DS.attr('string'),
 
   // Properties
   monthFormatted: function() {
