@@ -27,4 +27,8 @@ FactoryGirl.define do
   sequence :status do |n|
     ['visited', 'not_visited', 'other'].sample
   end
+
+  sequence :notes do |n|
+    "She needs her lawn mowed in #{n} weeks."
+  end
 end
