@@ -1,5 +1,5 @@
 class VisitSerializer < ActiveModel::Serializer
-  attributes :id, :month, :status
+  attributes :id, :month, :status, :notes
 
   has_one :sister
 
