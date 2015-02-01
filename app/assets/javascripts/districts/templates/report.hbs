@@ -4,7 +4,9 @@
       <tr>
         <th>Sister</th>
         <th>{{previousMonth}}</th>
+        <th>Notes</th>
         <th>{{currentMonth}}</th>
+        <th>Notes</th>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +18,8 @@
             </td>
             <td></td>
             <td></td>
+            <td></td>
+            <td></td>
           </tr>
           {{#each sister in district.sortedSisters}}
             {{#unless sister.isNew}}
@@ -23,6 +27,7 @@
                 <td>{{sister.fullName}}</td>
                 {{#each visit in sister.visits itemController='visit'}}
                   <td>{{visit.statusHumanize}}</td>
+                  <td>{{visit.notes}}</td>
                 {{/each}}
               </tr>
             {{/unless}}
@@ -36,9 +41,11 @@
         <td>
           {{previousMonthPercentVisited}}% Visited
         </td>
+        <td></td>
         <td>
           {{currentMonthPercentVisited}}% Visited
         </td>
+        <td></td>
       </tr>
     </tbody>
   </table>
