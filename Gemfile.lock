@@ -51,7 +51,7 @@ GEM
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
-    cancancan (1.9.2)
+    cancancan (1.10.1)
     celluloid (0.16.0)
       timers (~> 4.0.0)
     coderay (1.1.0)
