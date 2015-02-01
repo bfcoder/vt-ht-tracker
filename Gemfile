@@ -17,7 +17,7 @@ gem 'devise'
 gem 'cancancan'
 
 # UI
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
