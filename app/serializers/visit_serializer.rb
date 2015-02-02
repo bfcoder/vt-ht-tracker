@@ -1,6 +1,7 @@
 class VisitSerializer < ActiveModel::Serializer
   attributes :id, :month, :status, :notes
 
+  embed :ids
   has_one :sister
 
   def status

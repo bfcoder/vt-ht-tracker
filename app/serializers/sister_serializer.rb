@@ -1,6 +1,7 @@
 class SisterSerializer < ActiveModel::Serializer
   attributes :id, :first_name, :last_name
 
+  embed :ids
   has_many :visits, include: true
 
   def visits

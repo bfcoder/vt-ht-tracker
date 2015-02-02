@@ -21,10 +21,6 @@ module VtTracker
     # config.i18n.default_locale = :de
 
     # My Configs
-    ActiveModel::Serializer.setup do |config|
-      config.embed = :ids
-      config.embed_in_root = false
-    end
     config.handlebars.templates_root = 'districts/templates'
   end
 end

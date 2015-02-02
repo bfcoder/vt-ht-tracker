@@ -27,6 +27,7 @@ gem 'momentjs-rails'
 gem 'ember-rails'
 gem 'ember-source', '1.9.1'
 gem 'ember-data-source', '1.0.0.beta.14.1'
+gem 'active_model_serializers', '~> 0.8.3'
 
 # Error notifications
 gem 'rollbar'
