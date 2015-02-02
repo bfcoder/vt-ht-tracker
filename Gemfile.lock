@@ -33,7 +33,7 @@ GEM
     autoprefixer-rails (5.1.1)
       execjs
       json
-    barber (0.5.0)
+    barber (0.6.0)
       ember-source
       execjs
       handlebars-source (>= 1.0.0.rc.4)
@@ -69,9 +69,9 @@ GEM
     diff-lcs (1.2.5)
     ember-data-source (1.0.0.beta.14.1)
       ember-source (~> 1.8)
-    ember-rails (0.15.1)
+    ember-rails (0.16.1)
       active_model_serializers
-      barber (>= 0.4.1)
+      barber (>= 0.6.0)
       ember-data-source (>= 1.0.0.beta.5)
       ember-source (>= 1.1.0)
       execjs (>= 1.2)
