@@ -5,5 +5,16 @@
 
     <label>Last Name</label>
     {{input class="form-control" value=lastName on="enter"}}
+
+    <label>District</label>
+    {{vt-chosen
+      value=model.district
+      content=districts
+      optionValuePath='content'
+      optionLabelPath='content.name'
+      formController=controller
+      prompt=' '
+      dataPlaceholder='Select a District'
+      allowSingleDeselect=false}}
   </div>
 {{/my-modal}}
