@@ -23,6 +23,10 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'momentjs-rails'
 
+# Chosen
+gem 'chosen-rails'
+gem 'bootstrap-chosen-rails'
+
 # Ember
 gem 'ember-rails'
 gem 'ember-source', '1.9.1'
