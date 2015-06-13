@@ -12,6 +12,11 @@ VtTracker.SisterModalController = Ember.ObjectController.extend({
   }.property('isNew'),
 
   actions: {
+    removeModal: function() {
+      this.get('model').rollback();
+      return true;
+    },
+
     save: function() {
       var _self = this;
       var isNew = _self.get('model.isNew');
