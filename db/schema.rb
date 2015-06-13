@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150131134808) do
+ActiveRecord::Schema.define(version: 20150613224719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "districts", force: true do |t|
+  create_table "districts", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -24,7 +24,16 @@ ActiveRecord::Schema.define(version: 20150131134808) do
 
   add_index "districts", ["name"], name: "index_districts_on_name", unique: true, using: :btree
 
-  create_table "sisters", force: true do |t|
+  create_table "households", force: :cascade do |t|
+    t.integer  "district_id"
+    t.string   "name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "households", ["district_id"], name: "index_households_on_district_id", using: :btree
+
+  create_table "sisters", force: :cascade do |t|
     t.integer  "district_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -34,7 +43,7 @@ ActiveRecord::Schema.define(version: 20150131134808) do
 
   add_index "sisters", ["district_id"], name: "index_sisters_on_district_id", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -55,15 +64,17 @@ ActiveRecord::Schema.define(version: 20150131134808) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
-  create_table "visits", force: true do |t|
+  create_table "visits", force: :cascade do |t|
     t.datetime "month"
     t.string   "status"
     t.integer  "sister_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "notes"
+    t.integer  "household_id"
   end
 
+  add_index "visits", ["household_id"], name: "index_visits_on_household_id", using: :btree
   add_index "visits", ["month"], name: "index_visits_on_month", using: :btree
   add_index "visits", ["sister_id"], name: "index_visits_on_sister_id", using: :btree
   add_index "visits", ["status"], name: "index_visits_on_status", using: :btree
