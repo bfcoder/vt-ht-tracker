@@ -59,8 +59,8 @@ RSpec.describe Api::SistersController, type: :controller do
       describe "with valid params" do
         it "updates the requested sister" do
           sister = FactoryGirl.create(:sister)
-          expect_any_instance_of(Sister).to receive(:update_attributes).with({ "name" => "a name" })
-          put :update, {id: sister.id, sister: { "name" => "a name" }, format: :json}
+          expect_any_instance_of(Sister).to receive(:update_attributes).with({ "last_name" => "a name" })
+          put :update, {id: sister.id, sister: { "last_name" => "a name" }, format: :json}
         end
 
         it "returns the updated sister" do
