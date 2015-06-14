@@ -1,2 +1,6 @@
-<h1>Settings#show</h1>
-<p>Find me in app/views/settings/show.html.erb</p>
+<%= form_for(@setting, html: { class: "form-horizontal" }) do |f| %>
+  <div class="col-sm-3 col-md-3">
+    <%= f.select(:mode, [['Visiting Teaching', 'visiting_teaching'], ['Home Teaching', 'home_teaching']], {}, { class: "form-control" }) %>
+  </div>
+  <%= f.submit 'Save Settings', class: 'btn btn-default' %>
+<% end %>
