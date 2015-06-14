@@ -6,6 +6,11 @@ VtTracker.District = DS.Model.extend({
   // Attributes
   name: DS.attr('string'),
 
+  // Properties
+  occupied: function() {
+    return this.get('sisters.length') || this.get('households.length');
+  }.property('sisters.@each', 'households.@each'),
+
   percentVisited: function() {
     var visits = {
       previous_month: 0,
