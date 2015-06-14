@@ -1,0 +1,18 @@
+<div class="text-center">
+  <button {{action 'showModal' 'household-modal' newHousehold}} class="btn btn-default new-household">New Household</button>
+  <table class="table table-hover">
+    <tbody>
+      {{#each household in sortedHouseholds}}
+        {{#unless household.isNew}}
+          <tr>
+            <td>{{household.name}}</td>
+            <td>
+              <button {{action 'showModal' 'household-modal' household}} class="btn btn-default btn-xs">Edit</button>
+              <button {{action 'showModal' 'household-delete-modal' household}} class="btn btn-default btn-xs">Delete</button>
+            </td>
+          </tr>
+        {{/unless}}
+      {{/each}}
+    </tbody>
+  </table>
+</div>

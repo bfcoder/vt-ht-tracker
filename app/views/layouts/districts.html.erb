@@ -11,6 +11,11 @@
     </div>
     <%= javascript_include_tag 'application' %>
     <% if user_signed_in? && current_user.has_any_role? -%>
+      <script type="text/javascript">
+        window.GLOBAL_SETTINGS = {
+          mode: '<%= @setting.mode %>'
+        };
+      </script>
       <%= javascript_include_tag 'districts' %>
     <% end -%>
   </body>

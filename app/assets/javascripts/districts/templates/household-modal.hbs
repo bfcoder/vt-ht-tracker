@@ -1,0 +1,17 @@
+{{#my-modal title=modalTitle ok='save' close='removeModal'}}
+  <div class="form-group">
+    <label>Household Name</label>
+    {{input class="form-control" value=name on="enter"}}
+
+    <label>District</label>
+    {{vt-chosen
+      value=model.district
+      content=districts
+      optionValuePath='content'
+      optionLabelPath='content.name'
+      formController=controller
+      prompt=' '
+      dataPlaceholder='Select a District'
+      allowSingleDeselect=false}}
+  </div>
+{{/my-modal}}
