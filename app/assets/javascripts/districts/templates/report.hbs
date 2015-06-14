@@ -2,7 +2,7 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Sister</th>
+        <th>{{peopleTitle}}</th>
         <th>{{previousMonth}}</th>
         <th>Notes</th>
         <th>{{currentMonth}}</th>
@@ -21,11 +21,11 @@
             <td></td>
             <td></td>
           </tr>
-          {{#each sister in district.sortedSisters}}
-            {{#unless sister.isNew}}
+          {{#each person in district.sortedPeople}}
+            {{#unless person.isNew}}
               <tr>
-                <td>{{sister.fullName}}</td>
-                {{#each visit in sister.visits itemController='visit'}}
+                <td>{{person.fullName}}</td>
+                {{#each visit in person.visits itemController='visit'}}
                   <td>{{visit.statusHumanize}}</td>
                   <td>{{visit.notes}}</td>
                 {{/each}}
