@@ -23,6 +23,20 @@ VtTracker.Sister = DS.Model.extend(VtTracker.CommonDate, {
     }
   }.property('firstName', 'lastName'),
 
+  fullNameReversed: function(){
+    var firstName = this.get('firstName');
+    var lastName = this.get('lastName');
+    if (!Ember.isEmpty(firstName) && !Ember.isEmpty(lastName)) {
+      return lastName + ", " + firstName;
+    } else if (!Ember.isEmpty(lastName)) {
+      return lastName;
+    } else if (!Ember.isEmpty(firstName)) {
+      return firstName;
+    } else {
+      return "";
+    }
+  }.property('firstName', 'lastName'),
+
   numberVisited: function() {
     var _self = this;
     var visits = {

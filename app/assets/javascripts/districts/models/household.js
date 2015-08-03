@@ -7,6 +7,7 @@ VtTracker.Household = DS.Model.extend(VtTracker.CommonDate, {
   name: DS.attr('string'),
   teachers: DS.attr('string'),
   fullName: Ember.computed.alias('name'),
+  fullNameReversed: Ember.computed.alias('name'),
 
   // Properties
   numberVisited: function() {

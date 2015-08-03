@@ -14,7 +14,7 @@
       {{#each person in sortedPeople}}
         {{#unless person.isNew}}
           <tr>
-            <td>{{person.fullName}}</td>
+            <td>{{person.fullNameReversed}}</td>
             <td>{{person.teachers}}</td>
             {{#each visit in person.visits itemController='visit'}}
               <td>{{visit.statusHumanize}}</td>

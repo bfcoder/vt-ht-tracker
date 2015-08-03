@@ -16,7 +16,7 @@
         {{#each person in sortedPeople}}
           {{#unless person.isNew}}
             <tr>
-              <td>{{person.fullName}}</td>
+              <td>{{person.fullNameReversed}}</td>
               <td>{{person.district.name}}</td>
               <td>{{person.teachers}}</td>
               {{#each visit in person.visits itemController='visit'}}
