@@ -7,6 +7,10 @@ VtTracker.ReportRoute = Ember.Route.extend({
   },
 
   model: function(){
-    return this.modelFor('application');
+    if (GLOBAL_SETTINGS.mode === 'visiting_teaching') {
+      return this.store.find('sister');
+    } else if (GLOBAL_SETTINGS.mode === 'home_teaching') {
+      return this.store.find('household');
+    }
   }
 });
