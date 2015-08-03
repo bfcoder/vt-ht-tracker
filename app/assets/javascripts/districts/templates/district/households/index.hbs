@@ -6,6 +6,7 @@
         {{#unless household.isNew}}
           <tr>
             <td>{{household.name}}</td>
+            <td>{{household.teachers}}</td>
             <td>
               <button {{action 'showModal' 'household-modal' household}} class="btn btn-default btn-xs">Edit</button>
               <button {{action 'showModal' 'household-delete-modal' household}} class="btn btn-default btn-xs">Delete</button>

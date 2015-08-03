@@ -1,5 +1,5 @@
 class HouseholdSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :teachers
 
   embed :ids
   has_many :visits, include: true

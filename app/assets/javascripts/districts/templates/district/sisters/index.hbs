@@ -6,6 +6,7 @@
         {{#unless sister.isNew}}
           <tr>
             <td>{{sister.fullName}}</td>
+            <td>{{sister.teachers}}</td>
             <td>
               <button {{action 'showModal' 'sister-modal' sister}} class="btn btn-default btn-xs">Edit</button>
               <button {{action 'showModal' 'sister-delete-modal' sister}} class="btn btn-default btn-xs">Delete</button>

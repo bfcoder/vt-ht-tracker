@@ -5,6 +5,7 @@ VtTracker.Household = DS.Model.extend(VtTracker.CommonDate, {
 
   // Attributes
   name: DS.attr('string'),
+  teachers: DS.attr('string'),
   fullName: Ember.computed.alias('name'),
 
   // Properties

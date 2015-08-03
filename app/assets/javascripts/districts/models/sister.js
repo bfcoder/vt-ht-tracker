@@ -6,6 +6,7 @@ VtTracker.Sister = DS.Model.extend(VtTracker.CommonDate, {
   // Attributes
   firstName: DS.attr('string'),
   lastName: DS.attr('string'),
+  teachers: DS.attr('string'),
 
   // Properties
   fullName: function(){
