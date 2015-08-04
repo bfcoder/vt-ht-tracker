@@ -4,7 +4,7 @@
 VtTracker.ReportController = Ember.ArrayController.extend(VtTracker.CommonDate, {
   breadCrumb: 'Report',
 
-  peopleSorting: ['name', 'lastName'],
+  peopleSorting: ['lastName', 'firstName', 'name'],
   sortedPeople: Ember.computed.sort('model', 'peopleSorting'),
 
   peopleTitle: function() {

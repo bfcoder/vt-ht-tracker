@@ -1,7 +1,7 @@
 VtTracker.DistrictIndexController = Ember.ObjectController.extend({
   isSaving: false,
 
-  sistersSorting: ['lastName'],
+  sistersSorting: ['lastName', 'firstName'],
   sortedSisters: Ember.computed.sort('sisters', 'sistersSorting'),
 
   householdsSorting: ['name'],

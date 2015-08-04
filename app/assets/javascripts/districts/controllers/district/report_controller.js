@@ -1,7 +1,7 @@
 VtTracker.DistrictReportController = Ember.ObjectController.extend(VtTracker.CommonDate, {
   breadCrumb: 'Report',
 
-  sistersSorting: ['lastName'],
+  sistersSorting: ['lastName', 'firstName'],
   sortedSisters: Ember.computed.sort('sisters', 'sistersSorting'),
 
   householdsSorting: ['name'],
