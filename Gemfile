@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.1.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.3'
 gem 'unicorn'
 
 # Database
@@ -54,6 +54,9 @@ group :development, :test do
   gem 'byebug'
   gem 'factory_girl_rails'
   gem 'pry'
+
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console', '~> 2.0'
 
   gem 'faker'
 
