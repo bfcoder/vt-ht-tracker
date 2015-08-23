@@ -6,10 +6,10 @@ class DistrictSerializer < ActiveModel::Serializer
   has_many :households
 
   def sisters
-    object.sisters.sort_by {|sister| sister.last_name}
+    object.sisters.sort_by { |sister| sister.last_name || sister.first_name || "" }
   end
 
   def households
-    object.households.sort_by {|household| household.name}
+    object.households.sort_by { |household| household.name || "" }
   end
 end
