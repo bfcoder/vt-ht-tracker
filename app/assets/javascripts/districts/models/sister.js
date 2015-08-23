@@ -9,18 +9,9 @@ VtTracker.Sister = DS.Model.extend(VtTracker.CommonDate, {
   teachers: DS.attr('string'),
 
   // Properties
+
   fullName: function(){
-    var firstName = this.get('firstName');
-    var lastName = this.get('lastName');
-    if (!Ember.isEmpty(firstName) && !Ember.isEmpty(lastName)) {
-      return firstName + " " + lastName;
-    } else if (!Ember.isEmpty(lastName)) {
-      return lastName;
-    } else if (!Ember.isEmpty(firstName)) {
-      return firstName;
-    } else {
-      return "";
-    }
+    return [this.get('firstName'), this.get('lastName')].compact().join(' ');
   }.property('firstName', 'lastName'),
 
   fullNameReversed: function(){
