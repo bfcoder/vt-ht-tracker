@@ -28,9 +28,7 @@ gem 'chosen-rails'
 gem 'bootstrap-chosen-rails'
 
 # Ember
-gem 'ember-rails'
-gem 'ember-source', '1.9.1'
-gem 'ember-data-source', '1.0.0.beta.14.1'
+gem 'ember-cli-rails'
 gem 'active_model_serializers', '~> 0.8.3'
 
 # Error notifications
@@ -68,6 +66,7 @@ group :development, :test do
   gem 'guard'
   gem 'guard-bundler'
   gem 'guard-rspec', require: false
+  # gem 'guard-livereload', '~> 2.4', require: false
   gem 'rb-inotify', require: false
   gem 'rb-fsevent', require: false
   gem 'rb-fchange', require: false

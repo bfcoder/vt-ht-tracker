@@ -35,7 +35,6 @@ Rails.application.configure do
 
 
   # My Configs
-  config.ember.variant = :development
 
   # Configure static asset server for tests with Cache-Control for performance.
   config.serve_static_files  = true
