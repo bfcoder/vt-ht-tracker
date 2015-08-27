@@ -1,17 +1,17 @@
 "use strict";
 /*global GLOBAL_SETTINGS*/
 
-import Ember from "ember";
+import Ember      from "ember";
 import CommonDate from "../../mixins/common-date";
 
 export default Ember.Controller.extend(CommonDate, {
   breadCrumb: 'Report',
 
   sistersSorting: ['lastName', 'firstName'],
-  sortedSisters: Ember.computed.sort('sisters', 'sistersSorting'),
+  sortedSisters: Ember.computed.sort('model.sisters', 'sistersSorting'),
 
   householdsSorting: ['name'],
-  sortedHouseholds: Ember.computed.sort('households', 'householdsSorting'),
+  sortedHouseholds: Ember.computed.sort('model.households', 'householdsSorting'),
 
   peopleTitle: function() {
     if (GLOBAL_SETTINGS.mode === 'visiting_teaching') {

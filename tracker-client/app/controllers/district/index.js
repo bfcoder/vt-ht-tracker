@@ -7,10 +7,10 @@ export default Ember.Controller.extend({
   isSaving: false,
 
   sistersSorting: ['lastName', 'firstName'],
-  sortedSisters: Ember.computed.sort('sisters', 'sistersSorting'),
+  sortedSisters: Ember.computed.sort('model.sisters', 'sistersSorting'),
 
   householdsSorting: ['name'],
-  sortedHouseholds: Ember.computed.sort('households', 'householdsSorting'),
+  sortedHouseholds: Ember.computed.sort('model.households', 'householdsSorting'),
 
   peopleLink: function() {
     if (GLOBAL_SETTINGS.mode === 'visiting_teaching') {

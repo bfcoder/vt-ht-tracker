@@ -4,6 +4,6 @@ import Ember from "ember";
 
 export default Ember.Controller.extend({
   householdsSorting: ['name'],
-  sortedHouseholds: Ember.computed.sort('households', 'householdsSorting'),
+  sortedHouseholds: Ember.computed.sort('model.households', 'householdsSorting'),
   newHousehold: null
 });

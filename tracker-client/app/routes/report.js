@@ -5,7 +5,7 @@ import Ember from "ember";
 
 export default Ember.Route.extend({
   beforeModel: function(transition) {
-    if (!this.get('currentUser.isPrivileged')) {
+    if (!this.get('currentUser.model.isPrivileged')) {
       transition.abort();
       this.transitionTo('/');
     }
