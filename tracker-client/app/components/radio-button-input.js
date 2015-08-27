@@ -1,0 +1,49 @@
+"use strict";
+
+// Source: https://github.com/yapplabs/ember-radio-button
+// Converted on 7/29/2015
+
+import Ember from "ember";
+
+export default Ember.Component.extend({
+  tagName: 'input',
+  type: 'radio',
+
+  // value - required
+  // groupValue - required
+
+  // disabled - optional
+  // name - optional
+  // required - optional
+  // radioClass - string
+  // radioId - string
+
+  defaultLayout: null, // ie8 support
+
+  attributeBindings: [
+    'checked',
+    'disabled',
+    'name',
+    'required',
+    'type',
+    'value'
+  ],
+
+  checked: Ember.computed('groupValue', 'value', function(){
+    return this.get('groupValue') === this.get('value');
+  }).readOnly(),
+
+  sendChangedAction: function() {
+    this.sendAction('changed', this.get('value'));
+  },
+
+  change: function() {
+    var value = this.get('value');
+    var groupValue = this.get('groupValue');
+
+    if (groupValue !== value){
+      this.set('groupValue', value); // violates DDAU
+      Ember.run.once(this, 'sendChangedAction');
+    }
+  }
+});
