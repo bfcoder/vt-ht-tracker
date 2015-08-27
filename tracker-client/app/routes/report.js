@@ -13,9 +13,9 @@ export default Ember.Route.extend({
 
   model: function(){
     if (GLOBAL_SETTINGS.mode === 'visiting_teaching') {
-      return this.store.find('sister');
+      return this.store.findAll('sister');
     } else if (GLOBAL_SETTINGS.mode === 'home_teaching') {
-      return this.store.find('household');
+      return this.store.findAll('household');
     }
   }
 });

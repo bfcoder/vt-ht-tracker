@@ -4,6 +4,6 @@ import Ember from "ember";
 
 export default Ember.Route.extend({
   model: function(params) {
-    return this.store.find('district', params.district_id);
+    return this.store.findRecord('district', params.district_id);
   }
 });
