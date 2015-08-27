@@ -2,7 +2,7 @@
 /*global GLOBAL_SETTINGS*/
 
 import Ember from "ember";
-import CommonDate from "../../mixins/common-date";
+import CommonDate from "../mixins/common-date";
 
 export default Ember.Controller.extend(CommonDate, {
   breadCrumb: 'Report',
