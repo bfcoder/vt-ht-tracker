@@ -6,7 +6,7 @@ import moment     from "moment";
 
 export default DS.Model.extend({
   // Associations
-  sister: DS.belongsTo('sister'),
+  sister: DS.belongsTo('sister', { async: true }),
 
   // Attributes
   month: DS.attr('string'),

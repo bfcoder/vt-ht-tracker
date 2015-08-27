@@ -7,8 +7,8 @@ import moment     from "moment";
 
 export default DS.Model.extend(CommonDate, {
   // Associations
-  visits: DS.hasMany('visit'),
-  district: DS.belongsTo('district'),
+  visits: DS.hasMany('visit', { async: false }),
+  district: DS.belongsTo('district', { async: false }),
 
   // Attributes
   name: DS.attr('string'),
