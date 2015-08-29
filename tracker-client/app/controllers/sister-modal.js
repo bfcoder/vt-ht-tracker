@@ -3,9 +3,10 @@
 import Ember from "ember";
 
 export default Ember.Controller.extend({
-  needs: ['districtSistersIndex', 'application'],
+  sistersController: Ember.inject.controller('district/sisters/index'),
+  applicationController: Ember.inject.controller('application'),
 
-  districts: Ember.computed.alias('controllers.application.model'),
+  districts: Ember.computed.alias('applicationController.model'),
 
   modalTitle: function() {
     if (this.get('isNew')) {
@@ -27,7 +28,7 @@ export default Ember.Controller.extend({
       var district = _self.get('model.district');
       _self.get('model').save().then(function() {
         if (isNew) {
-          _self.set('controllers.districtSistersIndex.newSister', _self.store.createRecord('sister', {
+          _self.set('sistersController.newSister', _self.store.createRecord('sister', {
             district: district
           }));
         }

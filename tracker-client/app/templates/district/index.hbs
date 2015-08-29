@@ -1,0 +1,42 @@
+{{#if currentUser.model.isPrivileged}}
+  <div class="clearfix"></div>
+  <div class="col-md-3 text-right">
+    <span class="hidden-xs hidden-sm label-large-transparent label-larger"></span>
+  </div>
+  <div class='text-center col-md-7'>
+    {{#link-to 'district.report' class='btn btn-default district-inner-link'}}Report{{/link-to}}
+    {{#link-to peopleLink class='btn btn-default district-inner-link'}}{{peopleTitle}}{{/link-to}}
+  </div>
+{{/if}}
+
+{{#each sortedPeople as |person|}}
+  {{#unless person.isNew}}
+    <div class="row">
+
+      <div class="col-md-3">
+        <div class="text-center hidden-md hidden-lg label-large-transparent label-larger">{{person.fullName}}</div>
+      </div>
+
+      <div class="clearfix"></div>
+      <div class="col-md-3 text-right">
+        <span class="hidden-xs hidden-sm label-large-transparent label-larger">{{person.fullName}}</span>
+      </div>
+
+      <div class="text-center col-md-7">
+        <div class="row">
+          {{#each person.visits as |visit|}}
+            {{visit-edit
+              visit=visit}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  {{/unless}}
+{{/each}}
+
+<div class="text-center">
+  <button type="button" class="btn btn-primary" {{action 'saveVisits'}}>Save Visits</button>
+  {{#if showSaveNotice}}
+    <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+  {{/if}}
+</div>
