@@ -21,7 +21,6 @@ gem 'sass-rails'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
-gem 'momentjs-rails'
 
 # Chosen
 gem 'chosen-rails'
