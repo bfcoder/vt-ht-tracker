@@ -23,5 +23,8 @@ module.exports = function(defaults) {
   // The css for bootstrap is included in the rails app
   app.import('bower_components/bootstrap/dist/js/bootstrap.js');
 
+  // The css for chosen is included in the rails app
+  app.import('bower_components/chosen/chosen.jquery.min.js');
+
   return app.toTree();
 };

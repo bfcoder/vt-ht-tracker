@@ -1,0 +1,12 @@
+{{#if content}}
+  {{#ember-chosen selectionDidChange="change" prompt=prompt multiple=multiple maxSelectedOptions=maxSelectedOptions isRtl=isRtl disableSearchThreshold=disableSearchThreshold noResultsText=noResultsText width=width allowSingleDeselect=allowSingleDeselect value=computedSelection}}
+    {{#if prompt}}
+      <option></option>
+    {{/if}}
+    {{#each content key="@index" as |item|}}
+      <option value="{{read-path item optionValuePath}}">
+        {{read-path item optionLabelPath}}
+      </option>
+    {{/each}}
+  {{/ember-chosen}}
+{{/if}}
