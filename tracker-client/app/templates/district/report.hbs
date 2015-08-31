@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      {{#each person in sortedPeople}}
+      {{#each sortedPeople as |person|}}
         {{#unless person.isNew}}
           <tr>
             <td>{{person.fullNameReversed}}</td>

@@ -2,7 +2,7 @@
   <button {{action 'showModal' 'sister-modal' newSister}} class="btn btn-default new-sister">New Sister</button>
   <table class="table table-hover">
     <tbody>
-      {{#each sister in sortedSisters}}
+      {{#each sortedSisters as |sister|}}
         {{#unless sister.isNew}}
           <tr>
             <td>{{sister.fullName}}</td>
