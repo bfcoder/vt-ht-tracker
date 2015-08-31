@@ -8,8 +8,8 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    showModal: function(name, content) {
-      this.controllerFor(name).set('content', content);
+    showModal: function(name, model) {
+      this.controllerFor(name).set('model', model);
       this.render(name, {
         into: 'application',
         outlet: 'modal'
