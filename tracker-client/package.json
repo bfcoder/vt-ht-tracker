@@ -18,6 +18,9 @@
   },
   "author": "",
   "license": "MIT",
+  "dependencies": {
+    "bower": "^1.5.2"
+  },
   "devDependencies": {
     "broccoli-asset-rev": "^2.1.2",
     "ember-breadcrumbs": "0.1.7",
