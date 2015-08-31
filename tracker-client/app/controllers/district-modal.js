@@ -15,7 +15,7 @@ export default Ember.Controller.extend({
 
   actions: {
     removeModal: function() {
-      this.get('model').rollback();
+      this.get('model').rollbackAttributes();
       return true;
     },
 
