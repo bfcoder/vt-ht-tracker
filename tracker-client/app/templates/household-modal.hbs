@@ -1,10 +1,10 @@
 {{#my-modal title=modalTitle ok='save' close='removeModal'}}
   <div class="form-group">
     <label>Household Name</label>
-    {{input class="form-control" value=name on="enter"}}
+    {{input class="form-control" value=model.name enter="on"}}
 
     <label>Teachers</label>
-    {{input class="form-control" value=teachers on="enter"}}
+    {{input class="form-control" value=model.teachers enter="on"}}
 
     {{my-chosen
       label='District'
