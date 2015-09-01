@@ -1,0 +1,24 @@
+{{#my-modal title=modalTitle ok='save' close='removeModal'}}
+  <div class="form-group">
+    <label>First Name</label>
+    {{input class="form-control" value=model.firstName autofocus=true}}
+
+    <label>Last Name</label>
+    {{input class="form-control" value=model.lastName enter="on"}}
+
+    <label>Teachers</label>
+    {{input class="form-control" value=model.teachers enter="on"}}
+
+    {{my-chosen
+      label='District'
+      selection=model.district
+      content=districts
+      optionValuePath='id'
+      optionLabelPath='name'
+      isRelational=true
+      prompt='Select a District'
+      allowSingleDeselect=false
+      action=(action (mut model.district))}}
+
+  </div>
+{{/my-modal}}

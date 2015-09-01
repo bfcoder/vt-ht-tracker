@@ -1,0 +1,46 @@
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th class="report-people-title">{{peopleTitle}}</th>
+        <th class="report-people-title">District</th>
+        <th class="report-people-title">Teachers</th>
+        <th class="report-month">{{previousMonth}}</th>
+        <th class="report-notes">Notes</th>
+        <th class="report-month">{{currentMonth}}</th>
+        <th class="report-notes">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#if sortedPeople}}
+        {{#each sortedPeople as |person|}}
+          {{#unless person.isNew}}
+            <tr>
+              <td>{{person.fullNameReversed}}</td>
+              <td>{{person.district.name}}</td>
+              <td>{{person.teachers}}</td>
+              {{#each person.visits as |visit|}}
+                {{visit-show visit=visit}}
+              {{/each}}
+            </tr>
+          {{/unless}}
+        {{/each}}
+      {{/if}}
+      <tr>
+        <td></td>
+        <td>
+          Percents
+        </td>
+        <td></td>
+        <td>
+          {{previousMonthPercentVisited}}% Visited
+        </td>
+        <td></td>
+        <td>
+          {{currentMonthPercentVisited}}% Visited
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

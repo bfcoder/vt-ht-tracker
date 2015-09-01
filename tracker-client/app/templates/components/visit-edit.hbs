@@ -1,0 +1,40 @@
+<div class="btn-group well well-sm col-md-6" role="group" aria-label="...">
+  <h4 class="text-center"><span class="label label-default label-large-transparent">{{visit.monthFormatted}}</span></h4>
+  <div class="col-md-14">
+    <label class="btn btn-default">
+      {{#radio-button
+        classNames='radio-inline'
+        name=visit.id
+        value='visited'
+        groupValue=visit.status}}
+        Visited
+      {{/radio-button}}
+    </label>
+    <label class="btn btn-default">
+      {{#radio-button
+        classNames='radio-inline'
+        name=visit.id
+        value='not_visited'
+        groupValue=visit.status}}
+        Not Visited
+      {{/radio-button}}
+    </label>
+    {{#if currentUser.model.isPrivileged}}
+      <label class="btn btn-default">
+        {{#radio-button
+          classNames='radio-inline'
+          name=visit.id
+          value='other'
+          groupValue=visit.status}}
+          Other
+        {{/radio-button}}
+      </label>
+    {{/if}}
+    <button type="button" class="btn btn-warning btn-clear" {{action 'clearSelection'}}>Clear</button>
+  </div>
+  <div class="col-md-14">
+    {{text-area
+      value=visit.notes
+      placeholder="Spiritual or Physical Needs/Notes"}}
+  </div>
+</div>

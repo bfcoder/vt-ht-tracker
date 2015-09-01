@@ -21,6 +21,6 @@ module VtTracker
     # config.i18n.default_locale = :de
 
     # My Configs
-    config.handlebars.templates_root = 'districts/templates'
+
   end
 end
