@@ -1,5 +1,5 @@
 <div class="text-center">
-  <button {{action 'showModal' 'household-modal' newHousehold}} class="btn btn-default new-household">New Household</button>
+  <button {{action 'createNewHousehold'}} class="btn btn-default new-household">New Household</button>
   <table class="table table-hover">
     <tbody>
       {{#each sortedHouseholds as |household|}}
