@@ -3,8 +3,6 @@
 import Ember from "ember";
 
 export default Ember.Controller.extend({
-  needs: ['index'],
-
   modalTitle: function() {
     if (this.get('isNew')) {
       return 'New District';
@@ -20,13 +18,7 @@ export default Ember.Controller.extend({
     },
 
     save: function() {
-      var _self = this;
-      var isNew = _self.get('model.isNew');
-      _self.get('model').save().then(function() {
-        if (isNew) {
-          _self.set('controllers.index.newDistrict', _self.store.createRecord('district'));
-        }
-      });
+      this.get('model').save();
     }
   }
 });
