@@ -7,7 +7,8 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('report');
-  this.resource('district', { path: ':district_id' }, function() {
+  this.resource('district', { path: 'districts/:district_id' }, function() {
+    this.resource('district.visits', { path: '/visits' }, function() {});
     this.resource('district.sisters', { path: '/sisters' }, function() {});
     this.resource('district.households', { path: '/households' }, function() {});
     this.route('report');

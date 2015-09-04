@@ -10,7 +10,7 @@
       <div class="col-md-3">
         <div class="well col-md-12 district-link">
           <div class="text-center">
-            <h3>{{#link-to 'district' district}}{{district.name}}{{/link-to}}</h3>
+            <h3>{{#link-to 'district.visits' district}}{{district.name}}{{/link-to}}</h3>
             {{#if currentUser.model.isPrivileged}}
               <div>
                 <button {{action 'showModal' 'district-modal' district}} class="btn btn-default btn-sm">Edit</button>
