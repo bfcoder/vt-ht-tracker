@@ -10,6 +10,7 @@ class Ability
       can :manage, :all
     elsif user.has_role? :district_leader
       can :manage, Visit
+      can :manage, History
       can :read, User, id: user.id
       can :read, District
       can :read, Sister

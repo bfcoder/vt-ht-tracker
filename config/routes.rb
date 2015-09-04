@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :sisters
     resources :households
     resources :visits
+    resources :histories
     resources :users
   end
 
