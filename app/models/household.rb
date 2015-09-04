@@ -3,6 +3,4 @@ class Household < ActiveRecord::Base
   has_many :visits, dependent: :destroy
 
   validates :district, presence: true
-
-  accepts_nested_attributes_for :visits
 end
