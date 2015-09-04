@@ -3,6 +3,8 @@ class VisitSerializer < ActiveModel::Serializer
 
   embed :ids
   has_one :sister
+  has_one :household
+  has_many :histories
 
   def status
     if scope.privileged_user?
@@ -22,5 +24,13 @@ class VisitSerializer < ActiveModel::Serializer
 
   def month
     object.month.strftime("%Y-%m-%d")
+  end
+
+  def histories
+    if scope.privileged_user?
+      object.histories
+    else
+      []
+    end
   end
 end
