@@ -1,5 +1,5 @@
 class Api::VisitsController < ApplicationController
-  load_and_authorize_resource except: [:index]
+  load_and_authorize_resource
 
   before_filter :authenticate_user!
 
@@ -7,9 +7,7 @@ class Api::VisitsController < ApplicationController
 
   def index
     if params[:ids].present?
-      @visits = Visit.find(params[:ids])
-    else
-      @visits = Visit.all
+      @visits = @visits.find(params[:ids])
     end
     respond_with(@visits)
   end
