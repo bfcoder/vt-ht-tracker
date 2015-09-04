@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150803011617) do
+ActiveRecord::Schema.define(version: 20150904035133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20150803011617) do
   end
 
   add_index "districts", ["name"], name: "index_districts_on_name", unique: true, using: :btree
+
+  create_table "histories", force: :cascade do |t|
+    t.datetime "month"
+    t.string   "status"
+    t.string   "notes"
+    t.integer  "visit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "histories", ["visit_id"], name: "index_histories_on_visit_id", using: :btree
 
   create_table "households", force: :cascade do |t|
     t.integer  "district_id"
