@@ -7,7 +7,9 @@ class Api::VisitsController < ApplicationController
 
   def index
     if params[:ids].present?
-      @visits = @visits.find(params[:ids])
+      @visits = @visits.includes(:histories).find(params[:ids])
+    else
+      @visits = @visits.includes(:histories).all
     end
     respond_with(@visits)
   end

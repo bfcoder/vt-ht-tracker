@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   before_filter :load_user, only: :show # Only because of the current_user param do I manually have to call this
-  load_and_authorize_resource except: [:index]
+  load_and_authorize_resource
 
   before_filter :authenticate_user!
 
@@ -8,9 +8,9 @@ class Api::UsersController < ApplicationController
 
   def index
     if params[:ids].present?
-      users = User.find(params[:ids]).map { |user| user if user != current_user  }.compact
+      users = @users.find(params[:ids]).map { |user| user if user != current_user  }.compact
     else
-      users = User.all.map { |user| user if user != current_user  }.compact
+      users = @users.all.map { |user| user if user != current_user  }.compact
     end
     respond_with users
   end

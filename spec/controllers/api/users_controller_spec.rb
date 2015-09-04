@@ -92,28 +92,20 @@ RSpec.describe Api::UsersController, type: :controller do
     include_context 'a logged in visiting_teacher user'
 
     describe "GET index" do
-      it "returns all of the requested users" do
+      it "returns ActiveRecord::RecordNotFound" do
         user1 = FactoryGirl.create(:user)
         user2 = FactoryGirl.create(:user)
         user3 = FactoryGirl.create(:user)
-        get :index, { format: :json, ids: [user1.id, user3.id]}
-        result = JSON.parse(response.body)
-        expect(result['users']).to be_present
-        expect(result['users'].find{|s| s['id'] == user1.id}).to be_present
-        expect(result['users'].find{|s| s['id'] == user2.id}).to_not be_present
-        expect(result['users'].find{|s| s['id'] == user3.id}).to be_present
+        expect { get :index, { format: :json, ids: [user1.id, user3.id]} }.to raise_error(ActiveRecord::RecordNotFound)
       end
 
-      it "returns all of the users" do
+      it "returns none of the users" do
         user1 = FactoryGirl.create(:user)
         user2 = FactoryGirl.create(:user)
         user3 = FactoryGirl.create(:user)
         get :index, { format: :json }
         result = JSON.parse(response.body)
-        expect(result['users']).to be_present
-        expect(result['users'].find{|s| s['id'] == user1.id}).to be_present
-        expect(result['users'].find{|s| s['id'] == user2.id}).to be_present
-        expect(result['users'].find{|s| s['id'] == user3.id}).to be_present
+        expect(result['users']).to_not be_present
       end
     end
 

@@ -1,5 +1,5 @@
 class Api::SistersController < ApplicationController
-  load_and_authorize_resource except: [:index]
+  load_and_authorize_resource
 
   before_filter :authenticate_user!
 
@@ -7,9 +7,9 @@ class Api::SistersController < ApplicationController
 
   def index
     if params[:ids].present?
-      @sisters = Sister.includes(:visits).find(params[:ids])
+      @sisters = @sisters.includes(:visits).find(params[:ids])
     else
-      @sisters = Sister.includes(:visits).all
+      @sisters = @sisters.includes(:visits).all
     end
     respond_with(@sisters)
   end

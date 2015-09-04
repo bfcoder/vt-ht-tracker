@@ -1,5 +1,5 @@
 class Api::DistrictsController < ApplicationController
-  load_and_authorize_resource except: [:index]
+  load_and_authorize_resource
 
   before_filter :authenticate_user!
 
@@ -7,9 +7,9 @@ class Api::DistrictsController < ApplicationController
 
   def index
     if params[:ids].present?
-      @districts = District.includes(:sisters).find(params[:ids])
+      @districts = @districts.includes(:sisters).find(params[:ids])
     else
-      @districts = District.includes(:sisters).all
+      @districts = @districts.includes(:sisters).all
     end
     respond_with(@districts.sort_by {|district| district.name})
   end
