@@ -12,6 +12,7 @@ export default DS.Model.extend({
   month: DS.attr('string'),
   status: DS.attr('string'),
   notes: DS.attr('string'),
+  createdAt: DS.attr('date'),
 
   // Properties
   monthFormatted: function() {

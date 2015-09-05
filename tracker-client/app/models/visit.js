@@ -7,7 +7,8 @@ import moment     from "moment";
 export default DS.Model.extend({
   // Associations
   sister: DS.belongsTo('sister', { async: true }),
-  histories: DS.belongsTo('history', { async: true }),
+  household: DS.belongsTo('household', { async: true }),
+  histories: DS.hasMany('history', { async: true }),
 
   // Attributes
   month: DS.attr('string'),

@@ -32,6 +32,7 @@
         <div class="row">
           {{#each person.visits as |visit|}}
             {{visit-edit
+              currentUser=currentUser
               visit=visit}}
           {{/each}}
         </div>

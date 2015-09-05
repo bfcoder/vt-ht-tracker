@@ -1,5 +1,5 @@
 class HistorySerializer < ActiveModel::Serializer
-  attributes :id, :month, :status, :notes
+  attributes :id, :month, :status, :notes, :created_at
 
   embed :ids
   has_one :visit
