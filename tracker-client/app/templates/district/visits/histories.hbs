@@ -2,6 +2,6 @@
   <h1>{{model.fullName}}</h1>
 </div>
 
-{{#each model.visits as |visit|}}
+{{#each sortedVisitsComplete as |visit|}}
   {{visit-history visit=visit}}
 {{/each}}
