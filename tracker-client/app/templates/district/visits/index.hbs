@@ -26,6 +26,9 @@
         {{#if person.teachers}}
           <div class="hidden-xs hidden-sm label-large-transparent label-larger">Teachers: {{person.teachers}}</div>
         {{/if}}
+        {{#if currentUser.model.isPrivileged}}
+          {{#link-to 'district.visits.histories' person}}History{{/link-to}}
+        {{/if}}
       </div>
 
       <div class="text-center col-md-7">

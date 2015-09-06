@@ -1,8 +1,5 @@
 <div class="btn-group well well-sm col-md-6" role="group" aria-label="...">
   <h4 class="text-center"><span class="label label-default label-large-transparent">{{visit.monthFormatted}}</span></h4>
-  {{#if currentUser.model.isPrivileged}}
-    {{#link-to 'district.visits.histories' visit}}History <span class="badge">{{visit.histories.length}}</span>{{/link-to}}
-  {{/if}}
   <div class="col-md-14">
     <label class="btn btn-default">
       {{#radio-button

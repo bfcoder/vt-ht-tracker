@@ -1,24 +1,7 @@
 <div class="page-header">
-  <h1>{{personName}} <small>{{month}}</small></h1>
+  <h1>{{model.fullName}}</h1>
 </div>
 
-<div class="table-responsive">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th class="report-month">Created</th>
-        <th class="report-month">Status</th>
-        <th class="report-notes">Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#if sortedHistories}}
-        {{#each sortedHistories as |history|}}
-          <tr>
-            {{history-show history=history}}
-          </tr>
-        {{/each}}
-      {{/if}}
-    </tbody>
-  </table>
-</div>
+{{#each model.visits as |visit|}}
+  {{visit-history visit=visit}}
+{{/each}}
