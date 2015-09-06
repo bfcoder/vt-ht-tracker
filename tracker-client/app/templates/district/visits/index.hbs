@@ -40,7 +40,7 @@
 
       <div class="text-center col-md-7">
         <div class="row">
-          {{#each person.visits as |visit|}}
+          {{#each person.filteredVisits as |visit|}}
             {{visit-edit
               currentUser=currentUser
               visit=visit}}

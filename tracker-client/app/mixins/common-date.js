@@ -10,5 +10,13 @@ export default Ember.Mixin.create({
 
   currentMonth: function() {
     return moment(new Date()).format('MMMM');
+  }.property(),
+
+  previousMonthYear: function() {
+    return moment(new Date()).subtract(1, 'months').format('MMMM YYYY');
+  }.property(),
+
+  currentMonthYear: function() {
+    return moment(new Date()).format('MMMM YYYY');
   }.property()
 });

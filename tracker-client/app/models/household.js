@@ -24,7 +24,7 @@ export default DS.Model.extend(CommonDate, {
       previous_month: 0,
       current_month: 0
     };
-    this.get('visits').forEach(function(visit) {
+    this.get('filteredVisits').forEach(function(visit) {
       var previous_month = _self.get('previousMonth');
       var current_month = _self.get('currentMonth');
       var visit_month = moment(visit.get('month')).format('MMMM');
@@ -37,6 +37,17 @@ export default DS.Model.extend(CommonDate, {
       }
     });
     return visits;
-  }.property('visits.[].status')
+  }.property('filteredVisits.[].status'),
+
+  filteredVisits: function() {
+    // Only get the previous and current month visits
+    var previous_month_year = this.get('previousMonthYear');
+    var current_month_year = this.get('currentMonthYear');
+    var visits = this.get('visits').filter(function(visit) {
+      var visit_month_year = moment(visit.get('month')).format('MMMM YYYY');
+      return (visit_month_year === previous_month_year) || (visit_month_year === current_month_year);
+    });
+    return visits;
+  }.property('visits.[]')
 
 });
