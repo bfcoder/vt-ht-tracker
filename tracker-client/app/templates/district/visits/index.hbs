@@ -18,6 +18,11 @@
         {{#if person.teachers}}
           <div class="text-center hidden-md hidden-lg label-large-transparent label-larger">Teachers: {{person.teachers}}</div>
         {{/if}}
+        {{#if currentUser.model.isPrivileged}}
+          <div class="text-center hidden-md hidden-lg">
+            {{#link-to 'district.visits.histories' person}}History{{/link-to}}
+          </div>
+        {{/if}}
       </div>
 
       <div class="clearfix"></div>
@@ -27,7 +32,9 @@
           <div class="hidden-xs hidden-sm label-large-transparent label-larger">Teachers: {{person.teachers}}</div>
         {{/if}}
         {{#if currentUser.model.isPrivileged}}
-          {{#link-to 'district.visits.histories' person}}History{{/link-to}}
+          <div class="hidden-xs hidden-sm">
+            {{#link-to 'district.visits.histories' person}}History{{/link-to}}
+          </div>
         {{/if}}
       </div>
 
