@@ -5,8 +5,6 @@ import Ember      from "ember";
 import CommonDate from "../../mixins/common-date";
 
 export default Ember.Controller.extend(CommonDate, {
-  breadCrumb: 'Report',
-
   sistersSorting: ['lastName', 'firstName'],
   sortedSisters: Ember.computed.sort('model.sisters', 'sistersSorting'),
 
