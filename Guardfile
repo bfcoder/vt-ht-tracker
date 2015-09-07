@@ -38,7 +38,7 @@ guard :rspec, cmd: 'bundle exec rspec' do
 end
 
 
-guard 'livereload' do
+# guard 'livereload' do
   # watch(%r{app/views/.+\.(erb|haml|slim)$})
   # watch(%r{app/helpers/.+\.rb})
   # watch(%r{public/.+\.(css|js|html)})
@@ -49,4 +49,4 @@ guard 'livereload' do
 
   # Ember app
   # watch(%r{tracker-client/app/\w+/.+\.(js|hbs|html|css)})
-end
+# end

@@ -65,7 +65,7 @@ group :development, :test do
   gem 'guard'
   gem 'guard-bundler'
   gem 'guard-rspec', require: false
-  # gem 'guard-livereload', '~> 2.4', require: false
+  gem 'guard-livereload', '~> 2.4', require: false
   gem 'rb-inotify', require: false
   gem 'rb-fsevent', require: false
   gem 'rb-fchange', require: false
