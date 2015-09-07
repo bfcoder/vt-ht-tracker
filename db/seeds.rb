@@ -8,3 +8,22 @@
 
 setting = Setting.first
 setting = Setting.create(mode: 'visiting_teaching') if setting.nil?
+
+admin_email = 'admin@example.com'
+admin = User.find_by(email: admin_email)
+if(!admin)
+  puts "creating admin user"
+  admin = User.new
+  admin.username = 'admin'
+  admin.email = admin_email
+  password = 'asdfasdf'
+  admin.password = password
+  admin.password_confirmation = password
+  admin.roles = [:admin]
+  admin.save
+  puts "Admin user has been created."
+  puts "Please login with"
+  puts "username: admin"
+  puts "password: asdfasdf"
+  puts "and change your password!"
+end
