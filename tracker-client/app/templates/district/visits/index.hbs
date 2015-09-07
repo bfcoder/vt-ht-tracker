@@ -1,14 +1,3 @@
-{{#if currentUser.model.isPrivileged}}
-  <div class="clearfix"></div>
-  <div class="col-md-3 text-right">
-    <span class="hidden-xs hidden-sm label-large-transparent label-larger"></span>
-  </div>
-  <div class='text-center col-md-7'>
-    {{#link-to 'district.report' class='btn btn-default district-inner-link'}}Report{{/link-to}}
-    {{#link-to peopleLink class='btn btn-default district-inner-link'}}{{peopleTitle}}{{/link-to}}
-  </div>
-{{/if}}
-
 {{#each sortedPeople as |person|}}
   {{#unless person.isNew}}
     <div class="row">

@@ -12,22 +12,6 @@ export default Ember.Controller.extend({
   householdsSorting: ['name'],
   sortedHouseholds: Ember.computed.sort('model.households', 'householdsSorting'),
 
-  peopleLink: function() {
-    if (GLOBAL_SETTINGS.mode === 'visiting_teaching') {
-      return 'district.sisters';
-    } else if (GLOBAL_SETTINGS.mode === 'home_teaching') {
-      return 'district.households';
-    }
-  }.property(),
-
-  peopleTitle: function() {
-    if (GLOBAL_SETTINGS.mode === 'visiting_teaching') {
-      return 'Sisters';
-    } else if (GLOBAL_SETTINGS.mode === 'home_teaching') {
-      return 'Households';
-    }
-  }.property(),
-
   sortedPeople: function() {
     if (GLOBAL_SETTINGS.mode === 'visiting_teaching') {
       return this.get('sortedSisters');
