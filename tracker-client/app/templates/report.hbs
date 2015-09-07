@@ -19,7 +19,7 @@
               <td>{{person.fullNameReversed}}</td>
               <td>{{person.district.name}}</td>
               <td>{{person.teachers}}</td>
-              {{#each person.visits as |visit|}}
+              {{#each person.filteredVisits as |visit|}}
                 {{visit-show visit=visit}}
               {{/each}}
             </tr>
