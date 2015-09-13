@@ -1,14 +1,20 @@
 {{#if currentUser.model.isPrivileged}}
   <nav role="navigation" class="navigation">
     <ul class="nav nav-tabs">
-      {{#link-to "district.visits" tagName="li"}}
-        <a href={{href}} class="nav-link">Visits</a>
+      {{#link-to "district.visits" tagName="li" href=false}}
+        {{#link-to "district.visits" class="nav-link" bubbles=false}}
+          Visits
+        {{/link-to}}
       {{/link-to}}
-      {{#link-to peopleLink tagName="li"}}
-        <a href={{href}} class="nav-link">{{peopleTitle}}</a>
+      {{#link-to peopleLink tagName="li" href=false}}
+        {{#link-to peopleLink class="nav-link" bubbles=false}}
+          {{peopleTitle}}
+        {{/link-to}}
       {{/link-to}}
-      {{#link-to "district.report" tagName="li"}}
-        <a href={{href}} class="nav-link">Report</a>
+      {{#link-to "district.report" tagName="li" href=false}}
+        {{#link-to "district.report" class="nav-link" bubbles=false}}
+          Report
+        {{/link-to}}
       {{/link-to}}
     </ul>
   </nav>
