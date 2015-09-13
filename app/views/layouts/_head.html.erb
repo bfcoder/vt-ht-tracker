@@ -5,8 +5,8 @@
 <meta name="author" content="">
 <link rel="icon" href="/favicon.ico">
 
-<title><%= content_for?(:title) ? yield(:title) : 'Visiting Teaching Tracker' %></title>
+<title><%= content_for?(:title) ? yield(:title) : brand_title %></title>
 
 <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 <%= csrf_meta_tags %>
-<%= render "shared/rollbar" %>
+<%= render "layouts/rollbar" %>
