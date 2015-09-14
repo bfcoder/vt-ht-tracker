@@ -5,20 +5,15 @@
         Home
       {{/link-to}}
     {{/link-to}}
-    {{#link-to "district.visits" tagName="li" href=false}}
-      {{#link-to "district.visits" class="nav-link" bubbles=false}}
-        Visits
-      {{/link-to}}
-    {{/link-to}}
     {{#if currentUser.model.isPrivileged}}
       {{#link-to peopleLink tagName="li" href=false}}
         {{#link-to peopleLink class="nav-link" bubbles=false}}
           {{peopleTitle}}
         {{/link-to}}
       {{/link-to}}
-      {{#link-to "district.report" tagName="li" href=false}}
-        {{#link-to "district.report" class="nav-link" bubbles=false}}
-          Report
+      {{#link-to "home.report" tagName="li" href=false}}
+        {{#link-to "home.report" class="nav-link" bubbles=false}}
+          Full Report
         {{/link-to}}
       {{/link-to}}
     {{/if}}

@@ -4,6 +4,6 @@ import Ember from "ember";
 
 export default Ember.Route.extend({
   model: function() {
-    return this.modelFor('application');
+    return this.store.findAll('district');
   }
 });

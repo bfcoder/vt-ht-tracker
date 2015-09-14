@@ -3,9 +3,9 @@
 import Ember from "ember";
 
 export default Ember.Controller.extend({
-  applicationController: Ember.inject.controller('application'),
+  homeController: Ember.inject.controller('home'),
 
-  districts: Ember.computed.alias('applicationController.model'),
+  districts: Ember.computed.alias('homeController.model'),
 
   modalTitle: function() {
     if (this.get('isNew')) {

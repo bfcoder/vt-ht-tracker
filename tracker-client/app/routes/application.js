@@ -3,8 +3,10 @@
 import Ember from "ember";
 
 export default Ember.Route.extend({
-  model: function() {
-    return this.store.findAll('district');
+  beforeModel(transition) {
+    if(transition.targetName === "index") {
+      this.transitionTo('home');
+    }
   },
 
   actions: {
