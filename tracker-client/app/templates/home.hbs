@@ -1,21 +1,21 @@
 <nav role="navigation" class="navigation">
   <ul class="nav nav-tabs">
-    {{#link-to "home" tagName="li" href=false}}
-      {{#link-to "home" class="nav-link" bubbles=false}}
+    {{#active-link current=currentRouteName linkPath='home.index'}}
+      {{#link-to "home" class="nav-link"}}
         Home
       {{/link-to}}
-    {{/link-to}}
+    {{/active-link}}
     {{#if currentUser.model.isPrivileged}}
-      {{#link-to peopleLink tagName="li" href=false}}
+      {{#active-link current=currentRouteName linkPath='home.sisters.index'}}
         {{#link-to peopleLink class="nav-link" bubbles=false}}
           {{peopleTitle}}
         {{/link-to}}
-      {{/link-to}}
-      {{#link-to "home.report" tagName="li" href=false}}
+      {{/active-link}}
+      {{#active-link current=currentRouteName linkPath='home.report'}}
         {{#link-to "home.report" class="nav-link" bubbles=false}}
           Full Report
         {{/link-to}}
-      {{/link-to}}
+      {{/active-link}}
     {{/if}}
   </ul>
 </nav>
