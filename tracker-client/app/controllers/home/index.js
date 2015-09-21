@@ -1,5 +1,4 @@
 "use strict";
-/*global GLOBAL_SETTINGS*/
 
 import Ember from "ember";
 

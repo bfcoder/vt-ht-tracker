@@ -8,6 +8,14 @@ export default Ember.Controller.extend({
 
   currentRouteName: Ember.computed.alias('applicationController.currentRouteName'),
 
+  peopleLinkPath: function() {
+    if (GLOBAL_SETTINGS.mode === 'visiting_teaching') {
+      return 'home.sisters.index';
+    } else if (GLOBAL_SETTINGS.mode === 'home_teaching') {
+      return 'home.households.index';
+    }
+  }.property(),
+
   peopleLink: function() {
     if (GLOBAL_SETTINGS.mode === 'visiting_teaching') {
       return 'home.sisters';

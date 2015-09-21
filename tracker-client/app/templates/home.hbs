@@ -6,7 +6,7 @@
       {{/link-to}}
     {{/active-link}}
     {{#if currentUser.model.isPrivileged}}
-      {{#active-link current=currentRouteName linkPath='home.sisters.index'}}
+      {{#active-link current=currentRouteName linkPath=peopleLinkPath}}
         {{#link-to peopleLink class="nav-link" bubbles=false}}
           {{peopleTitle}}
         {{/link-to}}
