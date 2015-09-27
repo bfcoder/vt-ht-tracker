@@ -3,7 +3,7 @@
 import Ember from "ember";
 
 export default Ember.Controller.extend({
-  householdsSorting: ['name'],
+  householdsSorting: ['teachers', 'name'],
   sortedHouseholds: Ember.computed.sort('model.households', 'householdsSorting'),
 
   actions: {
