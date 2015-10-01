@@ -38,7 +38,7 @@ export default Ember.Controller.extend({
       _self.get('sortedPeople').forEach(function(person) {
         person.get('visits').forEach(function(visit) {
           // If the status has chaged, then save that visit.
-          if (visit.get('isDirty')) {
+          if (visit.get('hasDirtyAttributes')) {
             return visit.save().then(function() {
               _self.enableSaveNotice();
               Ember.run.debounce(_self, _self.disableSaveNotice, 2000);
