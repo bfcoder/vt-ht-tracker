@@ -46,7 +46,7 @@ class Api::HouseholdsController < ApplicationController
   private
     def set_user_time
       user_time = request.headers['HTTP_USER_TIME']
-      @user_time = DateTime.parse(user_time) rescue DateTime.now.in_time_zone("Mountain Time (US & Canada)")
+      @user_time = Date.parse(user_time) rescue Date.today.in_time_zone("Mountain Time (US & Canada)").to_date
     end
 
     def load_household

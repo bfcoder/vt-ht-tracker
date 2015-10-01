@@ -6,8 +6,8 @@ class SisterSerializer < ActiveModel::Serializer
 
   def visits
     [
-      object.visits.where(month: @options[:user_time].beginning_of_month.beginning_of_day - 1.month).first_or_create,
-      object.visits.where(month: @options[:user_time].beginning_of_month.beginning_of_day).first_or_create
+      object.visits.find_or_create_by(month: @options[:user_time].beginning_of_month.beginning_of_day - 1.month),
+      object.visits.find_or_create_by(month: @options[:user_time].beginning_of_month.beginning_of_day)
     ]
   end
 
