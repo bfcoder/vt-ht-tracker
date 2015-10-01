@@ -5,7 +5,10 @@ class HouseholdSerializer < ActiveModel::Serializer
   has_many :visits, include: true
 
   def visits
-    [object.visits.find_or_create_by(month: Date.today.beginning_of_month - 1.month), object.visits.find_or_create_by(month: Date.today.beginning_of_month)]
+    [
+      object.visits.where(month: @options[:user_time].beginning_of_month.beginning_of_day - 1.month).first_or_create,
+      object.visits.where(month: @options[:user_time].beginning_of_month.beginning_of_day).first_or_create
+    ]
   end
 
   def visits_complete_ids

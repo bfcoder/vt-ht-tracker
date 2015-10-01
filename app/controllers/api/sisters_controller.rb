@@ -1,7 +1,8 @@
 class Api::SistersController < ApplicationController
   load_and_authorize_resource
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
+  before_action :set_user_time
 
   respond_to :json
 
@@ -11,11 +12,11 @@ class Api::SistersController < ApplicationController
     else
       @sisters = @sisters.includes(:visits).all
     end
-    respond_with(@sisters)
+    respond_with(@sisters, user_time: @user_time)
   end
 
   def show
-    respond_with @sister
+    respond_with @sister, user_time: @user_time
   end
 
   def create
@@ -28,7 +29,7 @@ class Api::SistersController < ApplicationController
 
   def update
     if @sister.update_attributes(sister_params)
-      render json: @sister
+      render json: @sister, user_time: @user_time
     else
       render json: {errors: @sister.errors.messages}, status: 422
     end
@@ -43,6 +44,11 @@ class Api::SistersController < ApplicationController
   end
 
   private
+    def set_user_time
+      user_time = request.headers['HTTP_USER_TIME']
+      @user_time = DateTime.parse(user_time) rescue DateTime.now.in_time_zone("Mountain Time (US & Canada)")
+    end
+
     def load_sister
       @sister = Sister.includes(:visits).find(params[:id])
     end

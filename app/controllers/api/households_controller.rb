@@ -1,7 +1,8 @@
 class Api::HouseholdsController < ApplicationController
   load_and_authorize_resource
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
+  before_action :set_user_time
 
   respond_to :json
 
@@ -11,16 +12,16 @@ class Api::HouseholdsController < ApplicationController
     else
       @households = @households.includes(:visits).all
     end
-    respond_with(@households)
+    respond_with(@households, user_time: @user_time)
   end
 
   def show
-    respond_with @household
+    respond_with @household, user_time: @user_time
   end
 
   def create
     if @household.save
-      render json: @household
+      render json: @household, user_time: @user_time
     else
       render json: {errors: @household.errors.messages}, status: 422
     end
@@ -28,7 +29,7 @@ class Api::HouseholdsController < ApplicationController
 
   def update
     if @household.update_attributes(household_params)
-      render json: @household
+      render json: @household, user_time: @user_time
     else
       render json: {errors: @household.errors.messages}, status: 422
     end
@@ -43,6 +44,11 @@ class Api::HouseholdsController < ApplicationController
   end
 
   private
+    def set_user_time
+      user_time = request.headers['HTTP_USER_TIME']
+      @user_time = DateTime.parse(user_time) rescue DateTime.now.in_time_zone("Mountain Time (US & Canada)")
+    end
+
     def load_household
       @household = Household.includes(:visits).find(params[:id])
     end

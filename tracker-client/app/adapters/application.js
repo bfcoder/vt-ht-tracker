@@ -1,14 +1,16 @@
 "use strict";
 
-import Ember from "ember";
-import DS    from "ember-data";
-import $     from "jquery";
+import Ember  from "ember";
+import DS     from "ember-data";
+import $      from "jquery";
+import moment from "moment";
 
 export default DS.ActiveModelAdapter.extend({
   namespace: "api",
 
   headers: {
-    "X-CSRF-Token": $('meta[name="csrf-token"]').attr('content')
+    "X-CSRF-Token": $('meta[name="csrf-token"]').attr('content'),
+    "User-Time": moment().format()
   },
 
   shouldReloadAll: function() {
