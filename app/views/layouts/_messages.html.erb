@@ -7,7 +7,7 @@
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
         <% if name != :persistent_alert %>
           <%= content_tag :script, :type => "text/javascript" do -%>
-            setTimeout("var element = document.getElementById('flash_message'); if (element) { element.remove(); }", 12000);
+            setTimeout("var element = document.getElementById('flash_message'); if (element) { element.parentNode.removeChild(element); }", 12000);
           <% end %>
         <% end %>
       </div>
