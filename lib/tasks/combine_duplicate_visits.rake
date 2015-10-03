@@ -17,6 +17,9 @@ namespace :db do
               visit.status = visits[n+1].status if visits[n+1].status.present?
               visit.notes = visits[n+1].notes if visits[n+1].notes.present?
               visit.save
+              visits[n+1].histories.each do |history|
+                history.update_attributes(visit_id: visit.id)
+              end
               visits[n+1].destroy
             end
           end
@@ -34,6 +37,9 @@ namespace :db do
               visit.status = visits[n+1].status if visits[n+1].status.present?
               visit.notes = visits[n+1].notes if visits[n+1].notes.present?
               visit.save
+              visits[n+1].histories.each do |history|
+                history.update_attributes(visit_id: visit.id)
+              end
               visits[n+1].destroy
             end
           end
