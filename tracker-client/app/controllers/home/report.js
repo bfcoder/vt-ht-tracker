@@ -43,7 +43,7 @@ export default Ember.Controller.extend(CommonDate, {
     }
 
     return computed_percent_visited;
-  }.property('sortedPeople.[].numberVisited'),
+  }.property('sortedPeople.@each.numberVisited'),
 
   previousMonthPercentVisited: function() {
     return parseInt(this.get('percents').previous_month * 100, 10);

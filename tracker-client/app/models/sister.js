@@ -55,7 +55,7 @@ export default DS.Model.extend(CommonDate, {
       }
     });
     return visits;
-  }.property('filteredVisits.[].status'),
+  }.property('visits.@each.status'),
 
   filteredVisits: function() {
     // Only get the previous and current month visits
