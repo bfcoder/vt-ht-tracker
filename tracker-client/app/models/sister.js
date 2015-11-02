@@ -66,6 +66,6 @@ export default DS.Model.extend(CommonDate, {
       return (visit_month_year === previous_month_year) || (visit_month_year === current_month_year);
     });
     return visits;
-  }.property('visits.[]')
+  }.property('visits.@each.month')
 
 });

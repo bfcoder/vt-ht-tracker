@@ -1,3 +1,18 @@
+<div class="row">
+  <div class="col-md-3 col-md-offset-3 col-xs-10 col-xs-offset-1 col-lg-3 col-lg-offset-3">
+    {{my-chosen
+      label='Month'
+      selection=month
+      content=months
+      optionValuePath='id'
+      optionLabelPath='name'
+      isRelational=false
+      prompt='Select a Month'
+      allowSingleDeselect=false
+      action=(action "monthChanged")}}
+  </div>
+</div>
+
 {{#each sortedPeople as |person|}}
   {{#unless person.isNew}}
     <div class="row">
@@ -29,11 +44,11 @@
 
       <div class="text-center col-md-7">
         <div class="row">
-          {{#each person.filteredVisits as |visit|}}
-            {{visit-edit
-              currentUser=currentUser
-              visit=visit}}
-          {{/each}}
+          {{visit-edit
+            currentUser=currentUser
+            person=person
+            month=month
+            visits=visits}}
         </div>
       </div>
     </div>
