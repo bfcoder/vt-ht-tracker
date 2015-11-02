@@ -29,6 +29,68 @@ RSpec.describe Api::VisitsController, type: :controller do
         expect(result['visits'].find{|s| s['id'] == @visit2.id}).to be_present
         expect(result['visits'].find{|s| s['id'] == @visit3.id}).to be_present
       end
+
+      it "returns for specified district and month" do
+        @month = (Date.today-1.week).beginning_of_month.to_date.to_s
+        @district = FactoryGirl.create(:district)
+        @sister1 = FactoryGirl.create(:sister, district: @district)
+        @sister2 = FactoryGirl.create(:sister, district: @district)
+        @visit1 = FactoryGirl.create(:visit, month: @month, sister: @sister1)
+        @visit2 = FactoryGirl.create(:visit, month: @month, sister: @sister2)
+        @visit3 = FactoryGirl.create(:visit, month: @month)
+        get :index, { format: :json, district: @district.id, month: @month }
+        result = JSON.parse(response.body)
+        expect(result['visits']).to be_present
+        expect(result['visits'].find{|s| s['id'] == @visit1.id}).to be_present
+        expect(result['visits'].find{|s| s['id'] == @visit2.id}).to be_present
+        expect(result['visits'].find{|s| s['id'] == @visit3.id}).to_not be_present
+      end
+
+      it "returns for specified district and month with month not beginning_of_month" do
+        @month = (Date.today-1.week).beginning_of_month.to_date.to_s
+        @request_month = ((Date.today-1.week).beginning_of_month+1.week).to_date.to_s
+        @district = FactoryGirl.create(:district)
+        @sister1 = FactoryGirl.create(:sister, district: @district)
+        @sister2 = FactoryGirl.create(:sister, district: @district)
+        @visit1 = FactoryGirl.create(:visit, month: @month, sister: @sister1)
+        @visit2 = FactoryGirl.create(:visit, month: @month, sister: @sister2)
+        @visit3 = FactoryGirl.create(:visit, month: @month)
+        get :index, { format: :json, district: @district.id, month: @request_month }
+        result = JSON.parse(response.body)
+        expect(result['visits']).to be_present
+        expect(result['visits'].find{|s| s['id'] == @visit1.id}).to be_present
+        expect(result['visits'].find{|s| s['id'] == @visit2.id}).to be_present
+        expect(result['visits'].find{|s| s['id'] == @visit3.id}).to_not be_present
+      end
+
+      it "returns for specified district and month with month not beginning_of_month" do
+        @month = (Date.today-1.week).beginning_of_month.to_date.to_s
+        @request_month = ((Date.today-1.week).beginning_of_month+1.week).to_date.to_s
+        @district = FactoryGirl.create(:district)
+        @sister1 = FactoryGirl.create(:sister, district: @district)
+        @sister2 = FactoryGirl.create(:sister, district: @district)
+        @visit1 = FactoryGirl.create(:visit, month: @month, sister: @sister1)
+        @visit2 = FactoryGirl.create(:visit, month: @month, sister: @sister2)
+        @visit3 = FactoryGirl.create(:visit, month: @month)
+        get :index, { format: :json, district: @district.id, month: @request_month }
+        result = JSON.parse(response.body)
+        expect(result['visits']).to be_present
+        expect(result['visits'].find{|s| s['id'] == @visit1.id}).to be_present
+        expect(result['visits'].find{|s| s['id'] == @visit2.id}).to be_present
+        expect(result['visits'].find{|s| s['id'] == @visit3.id}).to_not be_present
+      end
+
+      it "creates visits if not found" do
+        @month = (Date.today-1.week).beginning_of_month.to_date.to_s
+        @request_month = ((Date.today-1.week).beginning_of_month+1.week).to_date.to_s
+        @district = FactoryGirl.create(:district)
+        @sister1 = FactoryGirl.create(:sister, district: @district)
+        @sister2 = FactoryGirl.create(:sister, district: @district)
+        get :index, { format: :json, district: @district.id, month: @request_month }
+        result = JSON.parse(response.body)
+        expect(result['visits']).to be_present
+        expect(result['visits'].count).to eq(2)
+      end
     end
 
     describe "GET show" do

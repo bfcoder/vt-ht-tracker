@@ -8,6 +8,13 @@ class Api::VisitsController < ApplicationController
   def index
     if params[:ids].present?
       @visits = @visits.includes(:histories).find(params[:ids])
+    elsif params[:district].present? && params[:month].present?
+      month = Date.parse(params[:month]) rescue Date.today.in_time_zone("Mountain Time (US & Canada)").to_date
+      month = month.beginning_of_month.to_s
+      district = District.includes(sisters: [visits: [:histories]], households: [visits: [:histories]]).find(params[:district])
+      @visits = district.sisters.map do |sister|
+        sister.visits.includes(:histories).where(month: month).first_or_create
+      end
     else
       @visits = @visits.includes(:histories).all
     end
