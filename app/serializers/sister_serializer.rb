@@ -4,13 +4,6 @@ class SisterSerializer < ActiveModel::Serializer
   embed :ids
   has_many :visits
 
-  def visits
-    [
-      object.visits.find_or_create_by(month: @options[:user_time].beginning_of_month - 1.month),
-      object.visits.find_or_create_by(month: @options[:user_time].beginning_of_month)
-    ]
-  end
-
   def visits_complete_ids
     object.visits.pluck(:id)
   end
