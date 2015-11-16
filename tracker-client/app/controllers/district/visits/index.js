@@ -64,7 +64,7 @@ export default Ember.Controller.extend({
 
   actions: {
     monthChanged: function(month) {
-      this.transitionTo({ queryParams: { month: month }});
+      this.transitionToRoute({ queryParams: { month: month }});
     },
 
     saveVisits: function() {
