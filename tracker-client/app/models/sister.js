@@ -2,10 +2,9 @@
 
 import DS         from "ember-data";
 import Ember      from "ember";
-import CommonDate from "../mixins/common-date";
 import moment     from "moment";
 
-export default DS.Model.extend(CommonDate, {
+export default DS.Model.extend({
   // Associations
   visits: DS.hasMany('visit', { async: true }),
   visitsComplete: DS.hasMany('visit', { async: true }),
@@ -16,13 +15,14 @@ export default DS.Model.extend(CommonDate, {
   lastName: DS.attr('string'),
   teachers: DS.attr('string'),
 
+  selectedMonth: null,
+
   // Properties
-
-  fullName: function() {
+  fullName: Ember.computed('firstName', 'lastName', function() {
     return [this.get('firstName'), this.get('lastName')].compact().join(' ');
-  }.property('firstName', 'lastName'),
+  }),
 
-  fullNameReversed: function() {
+  fullNameReversed: Ember.computed('firstName', 'lastName', function() {
     var firstName = this.get('firstName');
     var lastName = this.get('lastName');
     if (!Ember.isEmpty(firstName) && !Ember.isEmpty(lastName)) {
@@ -34,38 +34,24 @@ export default DS.Model.extend(CommonDate, {
     } else {
       return "";
     }
-  }.property('firstName', 'lastName'),
+  }),
 
-  numberVisited: function() {
-    var _self = this;
-    var visits = {
-      previous_month: 0,
-      current_month: 0
-    };
-    this.get('filteredVisits').forEach(function(visit) {
-      var previous_month = _self.get('previousMonth');
-      var current_month = _self.get('currentMonth');
-      var visit_month = moment(visit.get('month')).format('MMMM');
-      if (visit.get('status') === 'visited') {
-        if (previous_month === visit_month) {
-          visits.previous_month++;
-        } else if (current_month === visit_month) {
-          visits.current_month++;
-        }
-      }
-    });
-    return visits;
-  }.property('visits.@each.status'),
+  numberVisited: Ember.computed('selectionMonthVisit.status', function() {
+    if (this.get('selectionMonthVisit.status') === 'visited') {
+      return 1;
+    } else {
+      return 0;
+    }
+  }),
 
-  filteredVisits: function() {
-    // Only get the previous and current month visits
-    var previous_month_year = this.get('previousMonthYear');
-    var current_month_year = this.get('currentMonthYear');
-    var visits = this.get('visits').filter(function(visit) {
-      var visit_month_year = moment(visit.get('month')).format('MMMM YYYY');
-      return (visit_month_year === previous_month_year) || (visit_month_year === current_month_year);
+  selectionMonthVisit: Ember.computed('visits.@each.month', 'selectedMonth', function() {
+    // Only get the selected month visit
+    var selectedMonthYear = moment(this.get('selectedMonth'), 'YYYY-MM-DD').format('MMMM YYYY');
+    var selectionMonthVisit = this.get('visits').find(function(visit) {
+      var visitMonthYear = moment(visit.get('month')).format('MMMM YYYY');
+      return visitMonthYear === selectedMonthYear;
     });
-    return visits;
-  }.property('visits.@each.month')
+    return selectionMonthVisit;
+  })
 
 });

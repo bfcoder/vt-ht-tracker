@@ -46,10 +46,6 @@ export default Ember.Controller.extend({
     }
   }.property('sortedSisters', 'sortedHouseholds'),
 
-  visits: Ember.computed('model', function() {
-    return this.get('model').toArray();
-  }),
-
   showSaveNotice: function() {
     return this.get('isSaving');
   }.property('isSaving'),

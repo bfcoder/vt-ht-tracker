@@ -1,12 +1,25 @@
+<div class="row">
+  <div class="col-md-3 col-md-offset-3 col-xs-10 col-xs-offset-1 col-lg-3 col-lg-offset-3">
+    {{my-chosen
+      label='Month'
+      selection=month
+      content=months
+      optionValuePath='id'
+      optionLabelPath='name'
+      isRelational=false
+      prompt='Select a Month'
+      allowSingleDeselect=false
+      action=(action "monthChanged")}}
+  </div>
+</div>
+
 <div class="table-responsive">
   <table class="table table-hover">
     <thead>
       <tr>
         <th class="report-people-title">{{peopleTitle}}</th>
         <th class="report-people-title">Teachers</th>
-        <th class="report-month">{{previousMonth}}</th>
-        <th class="report-notes">Notes</th>
-        <th class="report-month">{{currentMonth}}</th>
+        <th class="report-month">{{selectedMonthWord}}</th>
         <th class="report-notes">Notes</th>
       </tr>
     </thead>
@@ -16,9 +29,7 @@
           <tr>
             <td>{{person.fullNameReversed}}</td>
             <td>{{person.teachers}}</td>
-            {{#each person.filteredVisits as |visit|}}
-              {{visit-show visit=visit}}
-            {{/each}}
+            {{visit-show visit=person.selectionMonthVisit}}
           </tr>
         {{/unless}}
       {{/each}}
@@ -28,11 +39,7 @@
           Percents
         </td>
         <td>
-          {{previousMonthPercentVisited}}% Visited
-        </td>
-        <td></td>
-        <td>
-          {{currentMonthPercentVisited}}% Visited
+          {{selectedMonthPercentVisited}}% Visited
         </td>
         <td></td>
       </tr>

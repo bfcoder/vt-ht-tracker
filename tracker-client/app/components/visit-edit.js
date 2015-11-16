@@ -1,14 +1,15 @@
 "use strict";
 /*global _*/
 
-import Ember from "ember";
+import Ember  from "ember";
+import moment from "moment";
 
 export default Ember.Component.extend({
   tagName: '',
 
   visit: Ember.computed('visits', 'month', function() {
     return _.find(this.get('visits'), function(visit) {
-      return visit.get('month') === this.get('month') && (this.get('person.id') === visit.get('sister.id') || this.get('person.id') === visit.get('household.id'));
+      return this.get('person.id') === visit.get('sister.id') || this.get('person.id') === visit.get('household.id');
     }.bind(this));
   }),
 

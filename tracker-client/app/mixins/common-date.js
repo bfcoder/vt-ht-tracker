@@ -4,19 +4,32 @@ import Ember  from "ember";
 import moment from "moment";
 
 export default Ember.Mixin.create({
-  previousMonth: function() {
-    return moment(new Date()).subtract(1, 'months').format('MMMM');
-  }.property(),
+  queryParams: ['month'],
+  month: Ember.computed(function() {
+    var date = moment();
+    if (date.date() <= 3) {
+      date = date.subtract(1, 'month');
+    }
+    return date.format("YYYY-MM-DD"); // Default value for queryParam
+  }),
 
-  currentMonth: function() {
-    return moment(new Date()).format('MMMM');
-  }.property(),
+  months: Ember.computed(function() {
+    var months = [];
+    for (var i = 0; i < 12; i++) {
+      var date = moment().subtract(i, 'month');
+      months.push({
+        id: date.format("YYYY-MM-DD"),
+        name: date.format("MMMM YYYY")
+      });
+    }
+    return months;
+  }),
 
-  previousMonthYear: function() {
-    return moment(new Date()).subtract(1, 'months').format('MMMM YYYY');
-  }.property(),
-
-  currentMonthYear: function() {
-    return moment(new Date()).format('MMMM YYYY');
-  }.property()
+  selectedMonthWord: Ember.computed('month', function() {
+    var date = moment();
+    if (date.date() <= 3) {
+      date = date.subtract(1, 'month');
+    }
+    return date.format("MMMM");
+  })
 });

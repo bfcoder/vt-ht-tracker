@@ -5,11 +5,15 @@ import Ember      from "ember";
 import CommonDate from "../../mixins/common-date";
 
 export default Ember.Controller.extend(CommonDate, {
+  districtController: Ember.inject.controller('district'),
+
+  district: Ember.computed.alias('districtController.model'),
+
   sistersSorting: ['lastName', 'firstName'],
-  sortedSisters: Ember.computed.sort('model.sisters', 'sistersSorting'),
+  sortedSisters: Ember.computed.sort('district.sisters', 'sistersSorting'),
 
   householdsSorting: ['name'],
-  sortedHouseholds: Ember.computed.sort('model.households', 'householdsSorting'),
+  sortedHouseholds: Ember.computed.sort('district.households', 'householdsSorting'),
 
   peopleTitle: function() {
     if (GLOBAL_SETTINGS.mode === 'visiting_teaching') {
@@ -27,47 +31,44 @@ export default Ember.Controller.extend(CommonDate, {
     }
   }.property('sortedSisters', 'sortedHouseholds'),
 
-  percents: function() {
+  percents: Ember.computed('month', 'district.percentVisited', function() {
     var num_visited = {
-      previous_month_sisters: 0,
-      current_month_sisters: 0,
-      previous_month_households: 0,
-      current_month_households: 0,
+      selected_month_sisters: 0,
+      selected_month_households: 0,
       number_sisters: 0,
       number_households: 0
     };
 
-    var district_percent_visited = this.get('model.percentVisited');
-    num_visited.previous_month_sisters += district_percent_visited.previous_month_sisters;
-    num_visited.current_month_sisters += district_percent_visited.current_month_sisters;
-    num_visited.previous_month_households += district_percent_visited.previous_month_households;
-    num_visited.current_month_households += district_percent_visited.current_month_households;
+    var district = this.get('district');
+    district.set('selectedMonth', this.get('month'));
+    var district_percent_visited = this.get('district.percentVisited');
+    num_visited.selected_month_sisters += district_percent_visited.selected_month_sisters;
+    num_visited.selected_month_households += district_percent_visited.selected_month_households;
     num_visited.number_sisters += district_percent_visited.number_sisters;
     num_visited.number_households += district_percent_visited.number_households;
 
     var computed_percent_visited = {
-      previous_month: 0,
-      current_month: 0
+      selectedMonthAverage: 0
     };
 
     if (num_visited.number_sisters > 0 && GLOBAL_SETTINGS.mode === 'visiting_teaching') {
-      computed_percent_visited.previous_month = num_visited.previous_month_sisters / num_visited.number_sisters;
-      computed_percent_visited.current_month = num_visited.current_month_sisters / num_visited.number_sisters;
+      computed_percent_visited.selectedMonthAverage = num_visited.selected_month_sisters / num_visited.number_sisters;
     }
 
     if (num_visited.number_households > 0 && GLOBAL_SETTINGS.mode === 'home_teaching') {
-      computed_percent_visited.previous_month = num_visited.previous_month_households / num_visited.number_households;
-      computed_percent_visited.current_month = num_visited.current_month_households / num_visited.number_households;
+      computed_percent_visited.selectedMonthAverage = num_visited.selected_month_households / num_visited.number_households;
     }
 
     return computed_percent_visited;
-  }.property('model.percentVisited'),
+  }),
 
-  previousMonthPercentVisited: function() {
-    return parseInt(this.get('percents').previous_month * 100, 10);
-  }.property('percents'),
+  selectedMonthPercentVisited: Ember.computed('percents', function() {
+    return parseInt(this.get('percents').selectedMonthAverage * 100, 10);
+  }),
 
-  currentMonthPercentVisited: function() {
-    return parseInt(this.get('percents').current_month * 100, 10);
-  }.property('percents')
+  actions: {
+    monthChanged: function(month) {
+      this.transitionToRoute({ queryParams: { month: month }});
+    }
+  }
 });
