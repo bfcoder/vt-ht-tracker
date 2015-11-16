@@ -30,7 +30,7 @@ RSpec.describe Api::VisitsController, type: :controller do
         expect(result['visits'].find{|s| s['id'] == @visit3.id}).to be_present
       end
 
-      it "returns for specified district and month" do
+      it "returns for specified district and month for a sister" do
         @month = (Date.today-1.week).beginning_of_month.to_date.to_s
         @district = FactoryGirl.create(:district)
         @sister1 = FactoryGirl.create(:sister, district: @district)
@@ -38,7 +38,7 @@ RSpec.describe Api::VisitsController, type: :controller do
         @visit1 = FactoryGirl.create(:visit, month: @month, sister: @sister1)
         @visit2 = FactoryGirl.create(:visit, month: @month, sister: @sister2)
         @visit3 = FactoryGirl.create(:visit, month: @month)
-        get :index, { format: :json, district: @district.id, month: @month }
+        get :index, { format: :json, district: @district.id, month: @month, setting: 'visiting_teaching' }
         result = JSON.parse(response.body)
         expect(result['visits']).to be_present
         expect(result['visits'].find{|s| s['id'] == @visit1.id}).to be_present
@@ -46,7 +46,7 @@ RSpec.describe Api::VisitsController, type: :controller do
         expect(result['visits'].find{|s| s['id'] == @visit3.id}).to_not be_present
       end
 
-      it "returns for specified district and month with month not beginning_of_month" do
+      it "returns for specified district and month with month not beginning_of_month for a sister" do
         @month = (Date.today-1.week).beginning_of_month.to_date.to_s
         @request_month = ((Date.today-1.week).beginning_of_month+1.week).to_date.to_s
         @district = FactoryGirl.create(:district)
@@ -55,7 +55,7 @@ RSpec.describe Api::VisitsController, type: :controller do
         @visit1 = FactoryGirl.create(:visit, month: @month, sister: @sister1)
         @visit2 = FactoryGirl.create(:visit, month: @month, sister: @sister2)
         @visit3 = FactoryGirl.create(:visit, month: @month)
-        get :index, { format: :json, district: @district.id, month: @request_month }
+        get :index, { format: :json, district: @district.id, month: @request_month, setting: 'visiting_teaching' }
         result = JSON.parse(response.body)
         expect(result['visits']).to be_present
         expect(result['visits'].find{|s| s['id'] == @visit1.id}).to be_present
@@ -63,7 +63,7 @@ RSpec.describe Api::VisitsController, type: :controller do
         expect(result['visits'].find{|s| s['id'] == @visit3.id}).to_not be_present
       end
 
-      it "returns for specified district and month with month not beginning_of_month" do
+      it "returns for specified district and month with month not beginning_of_month for a sister" do
         @month = (Date.today-1.week).beginning_of_month.to_date.to_s
         @request_month = ((Date.today-1.week).beginning_of_month+1.week).to_date.to_s
         @district = FactoryGirl.create(:district)
@@ -72,7 +72,7 @@ RSpec.describe Api::VisitsController, type: :controller do
         @visit1 = FactoryGirl.create(:visit, month: @month, sister: @sister1)
         @visit2 = FactoryGirl.create(:visit, month: @month, sister: @sister2)
         @visit3 = FactoryGirl.create(:visit, month: @month)
-        get :index, { format: :json, district: @district.id, month: @request_month }
+        get :index, { format: :json, district: @district.id, month: @request_month, setting: 'visiting_teaching' }
         result = JSON.parse(response.body)
         expect(result['visits']).to be_present
         expect(result['visits'].find{|s| s['id'] == @visit1.id}).to be_present
@@ -80,13 +80,42 @@ RSpec.describe Api::VisitsController, type: :controller do
         expect(result['visits'].find{|s| s['id'] == @visit3.id}).to_not be_present
       end
 
-      it "creates visits if not found" do
+      it "returns for specified district and month with month not beginning_of_month for a household" do
+        @month = (Date.today-1.week).beginning_of_month.to_date.to_s
+        @request_month = ((Date.today-1.week).beginning_of_month+1.week).to_date.to_s
+        @district = FactoryGirl.create(:district)
+        @household1 = FactoryGirl.create(:household, district: @district)
+        @household2 = FactoryGirl.create(:household, district: @district)
+        @visit1 = FactoryGirl.create(:visit, month: @month, household: @household1)
+        @visit2 = FactoryGirl.create(:visit, month: @month, household: @household2)
+        @visit3 = FactoryGirl.create(:visit, month: @month)
+        get :index, { format: :json, district: @district.id, month: @request_month, setting: 'home_teaching' }
+        result = JSON.parse(response.body)
+        expect(result['visits']).to be_present
+        expect(result['visits'].find{|s| s['id'] == @visit1.id}).to be_present
+        expect(result['visits'].find{|s| s['id'] == @visit2.id}).to be_present
+        expect(result['visits'].find{|s| s['id'] == @visit3.id}).to_not be_present
+      end
+
+      it "creates visits if not found a sister" do
         @month = (Date.today-1.week).beginning_of_month.to_date.to_s
         @request_month = ((Date.today-1.week).beginning_of_month+1.week).to_date.to_s
         @district = FactoryGirl.create(:district)
         @sister1 = FactoryGirl.create(:sister, district: @district)
         @sister2 = FactoryGirl.create(:sister, district: @district)
-        get :index, { format: :json, district: @district.id, month: @request_month }
+        get :index, { format: :json, district: @district.id, month: @request_month, setting: 'visiting_teaching' }
+        result = JSON.parse(response.body)
+        expect(result['visits']).to be_present
+        expect(result['visits'].count).to eq(2)
+      end
+
+      it "creates visits if not found for a household" do
+        @month = (Date.today-1.week).beginning_of_month.to_date.to_s
+        @request_month = ((Date.today-1.week).beginning_of_month+1.week).to_date.to_s
+        @district = FactoryGirl.create(:district)
+        @household1 = FactoryGirl.create(:household, district: @district)
+        @household2 = FactoryGirl.create(:household, district: @district)
+        get :index, { format: :json, district: @district.id, month: @request_month, setting: 'home_teaching' }
         result = JSON.parse(response.body)
         expect(result['visits']).to be_present
         expect(result['visits'].count).to eq(2)

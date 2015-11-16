@@ -12,8 +12,16 @@ class Api::VisitsController < ApplicationController
       month = Date.parse(params[:month]) rescue Date.today.in_time_zone("Mountain Time (US & Canada)").to_date
       month = month.beginning_of_month.to_s
       district = District.includes(sisters: [visits: [:histories]], households: [visits: [:histories]]).find(params[:district])
-      @visits = district.sisters.map do |sister|
-        sister.visits.includes(:histories).where(month: month).first_or_create
+      if params[:setting] == 'visiting_teaching'
+        @visits = district.sisters.map do |sister|
+          sister.visits.includes(:histories).where(month: month).first_or_create
+        end
+      elsif params[:setting] == 'home_teaching'
+        @visits = district.households.map do |household|
+          household.visits.includes(:histories).where(month: month).first_or_create
+        end
+      else
+        @visits = []
       end
     else
       @visits = @visits.includes(:histories).all
