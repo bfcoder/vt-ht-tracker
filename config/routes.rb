@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :users
-  resources :districts
+  resources :districts, only: [:index]
   resources :settings, only: [:show, :update]
 
   namespace :api, defaults: {format: :json} do
