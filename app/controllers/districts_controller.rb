@@ -5,6 +5,5 @@ class DistrictsController < ApplicationController
   respond_to :html
 
   def index
-    @districts = District.all
   end
 end
