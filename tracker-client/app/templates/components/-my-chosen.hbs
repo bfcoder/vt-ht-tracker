@@ -1,5 +1,5 @@
 {{#if content}}
-  {{#ember-chosen selectionDidChange="change" prompt=prompt multiple=multiple maxSelectedOptions=maxSelectedOptions isRtl=isRtl disableSearchThreshold=disableSearchThreshold noResultsText=noResultsText width=width allowSingleDeselect=allowSingleDeselect value=computedSelection}}
+  {{#ember-chosen selectionDidChange="change" prompt=prompt multiple=multiple maxSelectedOptions=maxSelectedOptions isRtl=isRtl disableSearchThreshold=disableSearchThreshold noResultsText=noResultsText width=width allowSingleDeselect=allowSingleDeselect value=computedSelection content=content}}
     {{#if prompt}}
       <option></option>
     {{/if}}

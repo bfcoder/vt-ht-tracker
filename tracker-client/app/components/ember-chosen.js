@@ -103,7 +103,7 @@ export default Ember.Component.extend({
       _this.sendAction('chosenMaxSelected', e, chosen);
     });
     _this.$().val(currentValue).trigger("chosen:updated");
-  }.observes('_options'),
+  }.observes('_options', 'content'),
 
   didRender: function() {
     this._super();
