@@ -16,12 +16,14 @@ class Ability
       can :read, District
       can :read, Sister
       can :read, Household
+      can :read, Setting
     elsif user.has_role? :visiting_teacher
       can :manage, Visit
       can :read, User, id: user.id
       can :read, District
       can :read, Sister
       can :read, Household
+      can :read, Setting
     end
 
     # Define abilities for the passed in user here. For example:

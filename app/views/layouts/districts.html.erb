@@ -13,6 +13,7 @@
     <% if user_signed_in? && current_user.has_any_role? -%>
       <script type="text/javascript">
         window.GLOBAL_SETTINGS = {
+          id: '<%= @setting.id %>',
           mode: '<%= @setting.mode %>'
         };
       </script>

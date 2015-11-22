@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :visits
     resources :histories
     resources :users
+    resources :settings, only: [:show]
   end
 
   # Example of regular route:
