@@ -31,4 +31,12 @@ FactoryGirl.define do
   sequence :notes do |n|
     "She needs her lawn mowed in #{n} weeks."
   end
+
+  sequence :mode do |n|
+    ['visiting_teaching', 'home_teaching'].sample
+  end
+
+  sequence :presidency_message do |n|
+    "A Message #{n}"
+  end
 end
