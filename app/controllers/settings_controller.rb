@@ -16,6 +16,6 @@ class SettingsController < ApplicationController
   private
 
     def setting_params
-      params.require(:setting).permit(:mode)
+      params.require(:setting).permit(:mode, :presidency_message)
     end
 end

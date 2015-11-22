@@ -1,6 +1,19 @@
 <%= form_for(@setting, html: { class: "form-horizontal" }) do |f| %>
-  <div class="col-sm-3 col-md-3">
-    <%= f.select(:mode, [['Visiting Teaching', 'visiting_teaching'], ['Home Teaching', 'home_teaching']], {}, { class: "form-control" }) %>
+
+  <div class="form-group">
+    <label for="setting_mode" class="col-sm-2 control-label">Mode</label>
+    <div class="col-sm-3 col-md-3">
+      <%= f.select(:mode, [['Visiting Teaching', 'visiting_teaching'], ['Home Teaching', 'home_teaching']], {}, { class: "form-control" }) %>
+    </div>
   </div>
+
+  <div class="form-group">
+    <label for="setting_mode" class="col-sm-2 control-label">Message</label>
+    <div class="col-sm-3 col-md-3">
+      <%= f.text_area :presidency_message, cols: 100, rows: 10 %>
+    </div>
+  </div>
+
   <%= f.submit 'Save Settings', class: 'btn btn-default' %>
+
 <% end %>
