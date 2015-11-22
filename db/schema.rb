@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003005729) do
+ActiveRecord::Schema.define(version: 20151121132820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "districts", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,28 +47,29 @@ ActiveRecord::Schema.define(version: 20151003005729) do
 
   create_table "settings", force: :cascade do |t|
     t.string   "mode"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "presidency_message", limit: 10000
   end
 
   create_table "sisters", force: :cascade do |t|
-    t.integer  "district_id", null: false
+    t.integer  "district_id",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "first_name",  limit: 255
+    t.string   "last_name",   limit: 255
     t.string   "teachers"
   end
 
   add_index "sisters", ["district_id"], name: "index_sisters_on_district_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -76,7 +77,7 @@ ActiveRecord::Schema.define(version: 20151003005729) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "roles_mask"
-    t.string   "username"
+    t.string   "username",               limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -85,7 +86,7 @@ ActiveRecord::Schema.define(version: 20151003005729) do
 
   create_table "visits", force: :cascade do |t|
     t.date     "month"
-    t.string   "status"
+    t.string   "status",       limit: 255
     t.integer  "sister_id"
     t.datetime "created_at"
     t.datetime "updated_at"
