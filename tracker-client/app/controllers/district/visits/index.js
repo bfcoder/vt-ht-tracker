@@ -11,6 +11,11 @@ export default Ember.Controller.extend({
   district: Ember.computed.alias('districtController.model'),
 
   isSaving: false,
+  message: null,
+
+  hasPresidencyMessage: Ember.computed('message.presidencyMessage', function() {
+    return Ember.isPresent(this.get('message.presidencyMessage'));
+  }),
 
   month: Ember.computed(function() {
     var date = moment();

@@ -17,5 +17,6 @@ export default Ember.Route.extend({
 
   setupController: function(controller, model) {
     this._super(controller, model.toArray());
+    controller.set('message', this.store.findRecord('setting', GLOBAL_SETTINGS.id));
   }
 });
