@@ -93,6 +93,8 @@ export default Ember.Component.extend({
         } else if (selectedValue === "false") {
           selectedValue = false;
         }
+      } else if (Ember.isPresent(e.currentTarget.value)) {
+        selectedValue = e.currentTarget.value;
       } else {
         selectedValue = null;
       }
