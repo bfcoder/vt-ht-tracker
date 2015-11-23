@@ -3,8 +3,8 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th class="text-center">Sister</th>
         <th class="text-center">Teachers</th>
+        <th class="text-center">Sisters taught</th>
         <th class="text-center">Options</th>
       </tr>
     </thead>
@@ -12,8 +12,8 @@
       {{#each sortedSisters as |sister|}}
         {{#unless sister.isNew}}
           <tr>
-            <td class="text-center">{{sister.fullName}}</td>
             <td class="text-center">{{sister.teachers}}</td>
+            <td class="text-center">{{sister.fullName}}</td>
             <td class="text-center">
               <button {{action 'showModal' 'sister-modal' sister}} class="btn btn-default btn-xs">Edit</button>
               <button {{action 'showModal' 'sister-delete-modal' sister}} class="btn btn-default btn-xs">Delete</button>
