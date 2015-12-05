@@ -11,7 +11,7 @@ RSpec.describe Visit, type: :model do
       @visit.status = FactoryGirl.generate(:status)
       @visit.notes = FactoryGirl.generate(:notes)
       @visit.save
-      expect(@visit.histories.count).to eq(2)
+      expect(@visit.histories.count).to eq(1)
       expect(@visit.histories.last.month).to eq(@visit.month)
       expect(@visit.histories.last.status).to eq(@visit.status)
       expect(@visit.histories.last.notes).to eq(@visit.notes)
