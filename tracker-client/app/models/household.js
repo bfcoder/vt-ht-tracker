@@ -15,7 +15,7 @@ export default DS.Model.extend({
   teachers: DS.attr('string'),
   fullName: Ember.computed.alias('name'),
   fullNameReversed: Ember.computed.alias('name'),
-  status: DS.attr('boolean'),
+  status: DS.attr('boolean', { defaultValue: true }),
 
   // Properties
   numberVisited: Ember.computed('selectionMonthVisit.status', function() {

@@ -14,7 +14,7 @@ export default DS.Model.extend({
   firstName: DS.attr('string'),
   lastName: DS.attr('string'),
   teachers: DS.attr('string'),
-  status: DS.attr('boolean'),
+  status: DS.attr('boolean', { defaultValue: true }),
 
   selectedMonth: null,
 
