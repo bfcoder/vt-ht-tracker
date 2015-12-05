@@ -6,7 +6,10 @@ import CommonDate from "../../mixins/common-date";
 
 export default Ember.Controller.extend(CommonDate, {
   peopleSorting: ['lastName', 'firstName', 'name'],
-  sortedPeople: Ember.computed.sort('model', 'peopleSorting'),
+  activePeople: Ember.computed.filter('model.@each.status', function(person) {
+    return person.get('status');
+  }),
+  sortedPeople: Ember.computed.sort('activePeople.@each.status', 'peopleSorting'),
 
   peopleTitle: Ember.computed(function() {
     if (GLOBAL_SETTINGS.mode === 'visiting_teaching') {
