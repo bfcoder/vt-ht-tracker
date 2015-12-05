@@ -38,10 +38,16 @@ export default Ember.Controller.extend({
   }),
 
   sistersSorting: ['lastName', 'firstName'],
-  sortedSisters: Ember.computed.sort('district.sisters', 'sistersSorting'),
+  activeSisters: Ember.computed.filter('district.sisters.@each.status', function(sister) {
+    return sister.get('status');
+  }),
+  sortedSisters: Ember.computed.sort('activeSisters.@each.status', 'sistersSorting'),
 
   householdsSorting: ['name'],
-  sortedHouseholds: Ember.computed.sort('district.households', 'householdsSorting'),
+  activeHouseholds: Ember.computed.filter('district.households.@each.status', function(household) {
+    return household.get('status');
+  }),
+  sortedHouseholds: Ember.computed.sort('activeHouseholds.@each.status', 'householdsSorting'),
 
   sortedPeople: function() {
     if (GLOBAL_SETTINGS.mode === 'visiting_teaching') {
