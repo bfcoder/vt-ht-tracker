@@ -18,7 +18,15 @@ export default DS.Model.extend({
     return this.get('sisters.length') || this.get('households.length');
   }.property('sisters.[]', 'households.[]'),
 
-  percentVisited: Ember.computed('selectedMonth', 'sisters.@each.numberVisited', 'households.@each.numberVisited', function() {
+  activeSisters: Ember.computed.filter('sisters.@each.status', function(sister) {
+    return sister.get('status');
+  }),
+
+  activeHouseholds: Ember.computed.filter('households.@each.status', function(household) {
+    return household.get('status');
+  }),
+
+  percentVisited: Ember.computed('selectedMonth', 'activeSisters.@each.numberVisited', 'activeHouseholds.@each.numberVisited', function() {
     var visits = {
       selected_month_sisters: 0,
       selected_month_households: 0,
@@ -28,7 +36,7 @@ export default DS.Model.extend({
 
     var selectedMonth = this.get('selectedMonth');
 
-    this.get('sisters').forEach(function(sister) {
+    this.get('activeSisters').forEach(function(sister) {
       if (!sister.get('isNew')) {
         sister.set('selectedMonth', selectedMonth);
         visits.selected_month_sisters += sister.get('numberVisited');
@@ -36,7 +44,7 @@ export default DS.Model.extend({
       }
     });
 
-    this.get('households').forEach(function(household) {
+    this.get('activeHouseholds').forEach(function(household) {
       if (!household.get('isNew')) {
         household.set('selectedMonth', selectedMonth);
         visits.selected_month_households += household.get('numberVisited');
