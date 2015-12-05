@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151121132820) do
+ActiveRecord::Schema.define(version: 20151205161225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,12 +38,14 @@ ActiveRecord::Schema.define(version: 20151121132820) do
   create_table "households", force: :cascade do |t|
     t.integer  "district_id"
     t.string   "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "teachers"
+    t.boolean  "status",      default: true
   end
 
   add_index "households", ["district_id"], name: "index_households_on_district_id", using: :btree
+  add_index "households", ["status"], name: "index_households_on_status", using: :btree
 
   create_table "settings", force: :cascade do |t|
     t.string   "mode"
@@ -53,15 +55,17 @@ ActiveRecord::Schema.define(version: 20151121132820) do
   end
 
   create_table "sisters", force: :cascade do |t|
-    t.integer  "district_id",             null: false
+    t.integer  "district_id",                            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "first_name",  limit: 255
     t.string   "last_name",   limit: 255
     t.string   "teachers"
+    t.boolean  "status",                  default: true
   end
 
   add_index "sisters", ["district_id"], name: "index_sisters_on_district_id", using: :btree
+  add_index "sisters", ["status"], name: "index_sisters_on_status", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
