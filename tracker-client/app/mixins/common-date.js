@@ -26,7 +26,7 @@ export default Ember.Mixin.create({
   }),
 
   selectedMonthWord: Ember.computed('month', function() {
-    var date = moment();
+    var date = moment(this.get('month'));
     if (date.date() <= 3) {
       date = date.subtract(1, 'month');
     }
