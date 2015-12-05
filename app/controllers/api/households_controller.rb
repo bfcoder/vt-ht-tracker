@@ -54,6 +54,6 @@ class Api::HouseholdsController < ApplicationController
     end
 
     def household_params
-      params.require(:household).permit(:name, :teachers, :district_id)
+      params.require(:household).permit(:name, :teachers, :district_id, :status)
     end
 end
