@@ -2,10 +2,9 @@
 /*global GLOBAL_SETTINGS*/
 
 import Ember from "ember";
-import moment from "moment";
+import CommonDate from "../../../mixins/common-date";
 
-export default Ember.Controller.extend({
-  queryParams: ['month'],
+export default Ember.Controller.extend(CommonDate, {
   districtController: Ember.inject.controller('district'),
 
   district: Ember.computed.alias('districtController.model'),
@@ -15,26 +14,6 @@ export default Ember.Controller.extend({
 
   hasPresidencyMessage: Ember.computed('message.presidencyMessage', function() {
     return Ember.isPresent(this.get('message.presidencyMessage'));
-  }),
-
-  month: Ember.computed(function() {
-    var date = moment();
-    if (date.date() <= 3) {
-      date = date.subtract(1, 'month');
-    }
-    return date.format("YYYY-MM-DD"); // Default value for queryParam
-  }),
-
-  months: Ember.computed(function() {
-    var months = [];
-    for (var i = 0; i < 12; i++) {
-      var date = moment().subtract(i, 'month');
-      months.push({
-        id: date.format("YYYY-MM-DD"),
-        name: date.format("MMMM YYYY")
-      });
-    }
-    return months;
   }),
 
   sistersSorting: ['lastName', 'firstName'],

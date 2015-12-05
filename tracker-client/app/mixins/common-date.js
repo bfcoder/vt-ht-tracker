@@ -3,11 +3,14 @@
 import Ember  from "ember";
 import moment from "moment";
 
+const DAYSINTOMONTH = 7;
+
 export default Ember.Mixin.create({
   queryParams: ['month'],
+
   month: Ember.computed(function() {
     var date = moment();
-    if (date.date() <= 3) {
+    if (date.date() <= DAYSINTOMONTH) {
       date = date.subtract(1, 'month');
     }
     return date.format("YYYY-MM-DD"); // Default value for queryParam
@@ -27,7 +30,7 @@ export default Ember.Mixin.create({
 
   selectedMonthWord: Ember.computed('month', function() {
     var date = moment(this.get('month'));
-    if (date.date() <= 3) {
+    if (date.date() <= DAYSINTOMONTH) {
       date = date.subtract(1, 'month');
     }
     return date.format("MMMM");
