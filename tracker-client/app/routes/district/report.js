@@ -1,7 +1,7 @@
 "use strict";
 
 import Ember from "ember";
-/*global _ GLOBAL_SETTINGS*/
+/*global GLOBAL_SETTINGS _*/
 
 export default Ember.Route.extend({
   queryParams: {
